@@ -7,19 +7,10 @@
             <img class="hero__logo" src="/files/logo.png" alt="Logo" />
             <div>
               <div class="kicker">Expérience en plusieurs étapes</div>
-              <h1>Repas complet + accès aux bains</h1>
+              <h1>Repas complet & accès aux bains</h1>
             </div>
           </div>
-
-          <div class="row">
-            <a class="btn btn--terra" href="#etapes">🧭 Voir les étapes</a>
-            <a class="btn btn--ember" href="mailto:contact@monsite.ch?subject=Réservation%20Expérience">📅 Réserver</a>
-          </div>
         </div>
-
-        <p class="lead" style="margin-top: 10px;">
-          Un parcours simple : on commence par un menu complet, puis on prolonge avec un moment de détente aux bains.
-        </p>
 
         <div class="chips" aria-label="Informations rapides">
           <span class="chip">⏱️ Durée : ~3h</span>
@@ -29,10 +20,6 @@
         </div>
       </header>
 
-      <div class="section-title" id="etapes">
-        <h2>Les étapes</h2>
-        <span class="muted">Claires, visuelles, ergonomiques</span>
-      </div>
 
       <div class="steps" role="list">
         <article class="card card--accent step" role="listitem">
@@ -42,21 +29,16 @@
               <span class="muted">Entrée • Plat • Dessert</span>
             </div>
 
-            <h3 class="step__title">Repas — menu complet</h3>
+            <h3 class="step__title">Repas</h3>
             <p class="step__subtitle">
               Un service fluide et un menu complet, pensé pour enchaîner sans stress sur la détente.
             </p>
 
             <ul class="step__bullets">
-              <li>Entrée + plat + dessert (selon saison)</li>
-              <li>Option végétarienne possible</li>
+              <li>Apéro et planchette</li>
+              <li>Repas 3 plats à la carte</li>
               <li>Rythme optimisé pour la suite</li>
             </ul>
-
-            <div class="cta-row">
-              <a class="btn btn--ember" href="mailto:contact@monsite.ch?subject=Réservation%20Expérience">📅 Réserver</a>
-              <a class="btn btn--ghost" href="/contact">📍 Nous trouver</a>
-            </div>
           </div>
 
           <figure class="media" aria-label="Image étape 1 - repas">

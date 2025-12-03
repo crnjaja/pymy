@@ -5,7 +5,7 @@
         <div class="hero__brand">
           <img class="hero__logo" src="/files/logo.png" alt="Logo" />
           <div>
-            <div class="kicker">Vue 3 • Node • Déploiement</div>
+            <div class="kicker">Noël • 2025 • Pour Py & My </div>
             <h1>Un site simple, premium, prêt prod</h1>
           </div>
         </div>

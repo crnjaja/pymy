@@ -11,16 +11,10 @@
             </div>
           </div>
 
-          <div class="row">
-            <a class="btn btn--terra" href="tel:+41210000000">📞 Appeler</a>
-            <a class="btn btn--ghost" href="mailto:contact@monsite.ch">✉️ Email</a>
-          </div>
         </div>
 
-        <p class="lead" style="margin-top: 10px;">Toutes les informations pratiques (sans formulaire).</p>
-
         <div class="chips" aria-label="Informations rapides">
-          <span class="chip">📍 Lausanne</span>
+          <span class="chip">📍 Martigny</span>
           <span class="chip">🧭 Itinéraire</span>
           <span class="chip">🕒 Horaires</span>
           <span class="chip">♿ Accès</span>
@@ -38,16 +32,16 @@
             <li class="info-item">
               <div class="info-key">Adresse</div>
               <div class="info-val">
-                Rue de l’Exemple 12<br />
-                1000 Lausanne, Suisse
+                Avenue du Grand-Saint-Bernard 1<br />
+                1920 Martigny, Suisse
               </div>
             </li>
 
             <li class="info-item">
               <div class="info-key">Téléphone</div>
               <div class="info-val">
-                <a class="btn btn--terra" href="tel:+41210000000" aria-label="Appeler">
-                  📞 +41 21 000 00 00
+                <a class="btn btn--terra" href="tel:+41277205959" aria-label="Appeler">
+                  📞 +41 27 720 59 59
                 </a>
               </div>
             </li>
@@ -55,8 +49,8 @@
             <li class="info-item">
               <div class="info-key">Email</div>
               <div class="info-val">
-                <a class="btn btn--ghost" href="mailto:contact@monsite.ch" aria-label="Envoyer un email">
-                  ✉️ contact@monsite.ch
+                <a class="btn btn--ghost" href="mailto:reception@lodze.ch" aria-label="Envoyer un email">
+                  ✉️ reception@lodze.ch
                 </a>
               </div>
             </li>
@@ -77,11 +71,6 @@
             </li>
           </ul>
 
-          <div class="cta-row" style="margin-top: 14px">
-            <a class="btn btn--ember" :href="mapsLink" target="_blank" rel="noreferrer">
-              🧭 Itinéraire Google Maps
-            </a>
-          </div>
         </article>
 
         <aside class="split__right map-frame" aria-label="Carte Google Maps">
@@ -101,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-const addressLine = "Rue de l’Exemple 12, 1000 Lausanne, Suisse";
+const addressLine = "Avenue du Grand-Saint-Bernard 1, 1920 Martigny, Suisse";
 const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(addressLine)}&z=15&output=embed`;
 const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressLine)}`;
 </script>

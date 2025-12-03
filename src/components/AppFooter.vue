@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container footer__inner">
-      <span>© {{ year }} Mon site</span>
+      <span>© {{ year }} Le Dodu</span>
       <span class="muted">Hébergé sur Infomaniak</span>
     </div>
   </footer>
