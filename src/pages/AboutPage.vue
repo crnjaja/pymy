@@ -10,14 +10,7 @@
           </div>
         </div>
 
-        <div class="row">
-          <a class="btn btn--ghost" href="/contact">✉️ Besoin d’aide</a>
-        </div>
       </div>
-
-      <p class="lead" style="margin-top: 10px;">
-        Consulte ou télécharge le bon au format PDF. Accès protégé par mot de passe.
-      </p>
 
       <div class="chips" aria-label="Informations rapides">
         <span class="chip">🔒 Protégé</span>
