@@ -1,51 +1,94 @@
 <template>
-  <section class="stack">
-    <h1>Contact</h1>
-    <p class="lead">Formulaire local (exemple). Pour envoyer vraiment, ajoute un endpoint /api.</p>
+  <section class="full-bleed theme-terre contact-shell">
+    <div class="container stack">
+      <header class="hero">
+        <div class="kicker">Contact</div>
+        <h1>Nous trouver & nous joindre</h1>
+        <p class="lead">Toutes les informations pratiques (sans formulaire).</p>
 
-    <form class="card stack" @submit.prevent="submit">
-      <label class="field">
-        <span>Nom</span>
-        <input v-model.trim="name" type="text" placeholder="Ton nom" autocomplete="name" />
-      </label>
+        <div class="chips" aria-label="Informations rapides">
+          <span class="chip">📍 Lausanne</span>
+          <span class="chip">📞 Téléphone</span>
+          <span class="chip">✉️ Email</span>
+          <span class="chip">🧭 Itinéraire</span>
+        </div>
+      </header>
 
-      <label class="field">
-        <span>Email</span>
-        <input v-model.trim="email" type="email" placeholder="toi@exemple.com" autocomplete="email" />
-      </label>
+      <div class="split">
+        <article class="card card--accent split__left">
+          <div class="section-title">
+            <h2>Contact & accès</h2>
+            <span class="muted">Adresse, horaires, itinéraire</span>
+          </div>
 
-      <label class="field">
-        <span>Message</span>
-        <textarea v-model.trim="message" rows="5" placeholder="Ton message..." />
-      </label>
+          <ul class="info-list">
+            <li class="info-item">
+              <div class="info-key">Adresse</div>
+              <div class="info-val">
+                Rue de l’Exemple 12<br />
+                1000 Lausanne, Suisse
+              </div>
+            </li>
 
-      <div class="row">
-        <button class="btn" type="submit">Simuler l’envoi</button>
-        <a class="btn btn--ghost" :href="mailto" target="_blank" rel="noreferrer">Ouvrir mail</a>
+            <li class="info-item">
+              <div class="info-key">Téléphone</div>
+              <div class="info-val">
+                <a class="btn btn--terra" href="tel:+41210000000" aria-label="Appeler">
+                  📞 +41 21 000 00 00
+                </a>
+              </div>
+            </li>
+
+            <li class="info-item">
+              <div class="info-key">Email</div>
+              <div class="info-val">
+                <a class="btn btn--ghost" href="mailto:contact@monsite.ch" aria-label="Envoyer un email">
+                  ✉️ contact@monsite.ch
+                </a>
+              </div>
+            </li>
+
+            <li class="info-item">
+              <div class="info-key">Horaires</div>
+              <div class="info-val">
+                Mer–Dim : 11:30 → 22:30<br />
+                (bains : créneaux selon réservation)
+              </div>
+            </li>
+
+            <li class="info-item">
+              <div class="info-key">Accès</div>
+              <div class="info-val">
+                Parking à proximité · Transports publics · Accès PMR selon zones
+              </div>
+            </li>
+          </ul>
+
+          <div class="cta-row" style="margin-top: 14px">
+            <a class="btn btn--ember" :href="mapsLink" target="_blank" rel="noreferrer">
+              🧭 Itinéraire Google Maps
+            </a>
+          </div>
+        </article>
+
+        <aside class="split__right map-frame" aria-label="Carte Google Maps">
+          <div class="map-aspect">
+            <iframe
+              :title="`Carte : ${addressLine}`"
+              :src="mapsEmbedSrc"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </aside>
       </div>
-
-      <p v-if="status" class="muted">{{ status }}</p>
-    </form>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
-
-const name = ref("");
-const email = ref("");
-const message = ref("");
-const status = ref<string | null>(null);
-
-const mailto = computed(() => {
-  const subject = encodeURIComponent(`Contact - ${name.value || "Sans nom"}`);
-  const body = encodeURIComponent(
-    `Nom: ${name.value}\nEmail: ${email.value}\n\nMessage:\n${message.value}\n`
-  );
-  return `mailto:contact@ton-domaine.tld?subject=${subject}&body=${body}`;
-});
-
-function submit() {
-  status.value = "OK — ici tu appellerais une API /api/contact (à ajouter si besoin).";
-}
+const addressLine = "Rue de l’Exemple 12, 1000 Lausanne, Suisse";
+const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(addressLine)}&z=15&output=embed`;
+const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressLine)}`;
 </script>

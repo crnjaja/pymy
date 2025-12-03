@@ -1,0 +1,59 @@
+/* Minimal, propre, sans coins arrondis forcés */
+.bon-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .bon-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pw-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.viewer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.locked {
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  padding: 18px;
+  min-height: 260px;
+  display: grid;
+  place-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.lock {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.canvas-wrap {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.02);
+  overflow: auto;
+  max-height: 70vh;
+}
+
+.canvas-wrap canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+.hint {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 12px;
+}

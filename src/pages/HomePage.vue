@@ -1,6 +1,6 @@
 <template>
   <section class="stack">
-    <h1>Accueil bis</h1>
+    <h1>Accueil</h1>
     <p class="lead">
       Site Vue simple, propre, multi-pages, prêt pour déploiement sur un hosting Node.js (Infomaniak).
     </p>
