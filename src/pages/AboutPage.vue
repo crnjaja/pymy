@@ -1,9 +1,21 @@
 <template>
   <section class="stack bon-shell">
     <header class="hero">
-      <div class="kicker">Document</div>
-      <h1>Le Bon</h1>
-      <p class="lead">
+      <div class="hero__top">
+        <div class="hero__brand">
+          <img class="hero__logo" src="/files/logo.png" alt="Logo" />
+          <div>
+            <div class="kicker">Document</div>
+            <h1>Le Bon</h1>
+          </div>
+        </div>
+
+        <div class="row">
+          <a class="btn btn--ghost" href="/contact">✉️ Besoin d’aide</a>
+        </div>
+      </div>
+
+      <p class="lead" style="margin-top: 10px;">
         Consulte ou télécharge le bon au format PDF. Accès protégé par mot de passe.
       </p>
 
@@ -16,7 +28,7 @@
 
     <div class="bon-grid">
       <!-- Accès -->
-      <article class="card stack" aria-label="Accès au document">
+      <article class="card card--accent stack" aria-label="Accès au document">
         <div class="section-title">
           <h2>Accès</h2>
           <span class="muted">Déverrouiller l’aperçu</span>
@@ -49,12 +61,11 @@
             </div>
           </label>
 
-          <div class="row" style="flex-wrap: wrap; gap: 10px">
+          <div class="row" style="gap: 10px">
             <button class="btn btn--ember" type="submit" :disabled="loading || !password">
               {{ loading ? "Déverrouillage..." : "Déverrouiller" }}
             </button>
 
-            <!-- ✅ Sans backend: lien direct OK, le PDF reste chiffré -->
             <a
               v-if="unlocked"
               class="btn btn--ghost"
@@ -82,7 +93,7 @@
       </article>
 
       <!-- Viewer -->
-      <article class="card stack" aria-label="Aperçu du PDF">
+      <article class="card card--accent stack" aria-label="Aperçu du PDF">
         <div class="viewer-head">
           <div class="section-title" style="margin: 0">
             <h2>Aperçu</h2>
@@ -94,19 +105,11 @@
             </span>
           </div>
 
-          <div v-if="unlocked" class="viewer-actions row" style="gap: 8px; flex-wrap: wrap">
-            <button class="btn btn--ghost" type="button" @click="prevPage" :disabled="loading || pageNum <= 1">
-              ←
-            </button>
-            <button class="btn btn--ghost" type="button" @click="nextPage" :disabled="loading || pageNum >= numPages">
-              →
-            </button>
-            <button class="btn btn--ghost" type="button" @click="zoomOut" :disabled="loading || scale <= 0.7">
-              −
-            </button>
-            <button class="btn btn--ghost" type="button" @click="zoomIn" :disabled="loading || scale >= 2.2">
-              +
-            </button>
+          <div v-if="unlocked" class="row" style="gap: 8px">
+            <button class="btn btn--ghost" type="button" @click="prevPage" :disabled="loading || pageNum <= 1">←</button>
+            <button class="btn btn--ghost" type="button" @click="nextPage" :disabled="loading || pageNum >= numPages">→</button>
+            <button class="btn btn--ghost" type="button" @click="zoomOut" :disabled="loading || scale <= 0.7">−</button>
+            <button class="btn btn--ghost" type="button" @click="zoomIn" :disabled="loading || scale >= 2.2">+</button>
           </div>
         </div>
 
@@ -132,7 +135,6 @@ import workerSrc from "pdfjs-dist/build/pdf.worker.min?url";
 
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = workerSrc;
 
-// ✅ sans backend : fichier public
 const pdfUrl = "/files/bon.pdf";
 
 const password = ref("");
@@ -159,8 +161,7 @@ async function unlock() {
   try {
     const task = (pdfjsLib as any).getDocument({
       url: pdfUrl,
-      password: password.value, // ✅ PDF chiffré => faux mdp => erreur
-      // Ces options rendent le chargement plus robuste selon serveurs/CDN :
+      password: password.value,
       disableRange: true,
       disableStream: true,
     });

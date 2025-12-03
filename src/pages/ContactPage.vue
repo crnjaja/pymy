@@ -1,16 +1,29 @@
 <template>
-  <section class="full-bleed theme-terre contact-shell">
+  <section class="full-bleed">
     <div class="container stack">
       <header class="hero">
-        <div class="kicker">Contact</div>
-        <h1>Nous trouver & nous joindre</h1>
-        <p class="lead">Toutes les informations pratiques (sans formulaire).</p>
+        <div class="hero__top">
+          <div class="hero__brand">
+            <img class="hero__logo" src="/files/logo.png" alt="Logo" />
+            <div>
+              <div class="kicker">Contact</div>
+              <h1>Nous trouver & nous joindre</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <a class="btn btn--terra" href="tel:+41210000000">📞 Appeler</a>
+            <a class="btn btn--ghost" href="mailto:contact@monsite.ch">✉️ Email</a>
+          </div>
+        </div>
+
+        <p class="lead" style="margin-top: 10px;">Toutes les informations pratiques (sans formulaire).</p>
 
         <div class="chips" aria-label="Informations rapides">
           <span class="chip">📍 Lausanne</span>
-          <span class="chip">📞 Téléphone</span>
-          <span class="chip">✉️ Email</span>
           <span class="chip">🧭 Itinéraire</span>
+          <span class="chip">🕒 Horaires</span>
+          <span class="chip">♿ Accès</span>
         </div>
       </header>
 

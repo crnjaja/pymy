@@ -1,10 +1,23 @@
 <template>
-  <section class="full-bleed theme-terre experience-shell">
+  <section class="full-bleed">
     <div class="container stack">
       <header class="hero">
-        <div class="kicker">Expérience en plusieurs étapes</div>
-        <h1>Repas complet + accès aux bains</h1>
-        <p class="lead">
+        <div class="hero__top">
+          <div class="hero__brand">
+            <img class="hero__logo" src="/files/logo.png" alt="Logo" />
+            <div>
+              <div class="kicker">Expérience en plusieurs étapes</div>
+              <h1>Repas complet + accès aux bains</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <a class="btn btn--terra" href="#etapes">🧭 Voir les étapes</a>
+            <a class="btn btn--ember" href="mailto:contact@monsite.ch?subject=Réservation%20Expérience">📅 Réserver</a>
+          </div>
+        </div>
+
+        <p class="lead" style="margin-top: 10px;">
           Un parcours simple : on commence par un menu complet, puis on prolonge avec un moment de détente aux bains.
         </p>
 
@@ -26,7 +39,7 @@
           <div class="step__meta">
             <div class="step__badge">
               <span class="step__num" aria-hidden="true">1</span>
-              <span class="muted">Étape 1</span>
+              <span class="muted">Entrée • Plat • Dessert</span>
             </div>
 
             <h3 class="step__title">Repas — menu complet</h3>
@@ -41,15 +54,14 @@
             </ul>
 
             <div class="cta-row">
-              <a class="btn btn--terra" href="mailto:contact@monsite.ch?subject=Réservation%20Expérience">
-                📅 Réserver
-              </a>
+              <a class="btn btn--ember" href="mailto:contact@monsite.ch?subject=Réservation%20Expérience">📅 Réserver</a>
+              <a class="btn btn--ghost" href="/contact">📍 Nous trouver</a>
             </div>
           </div>
 
           <figure class="media" aria-label="Image étape 1 - repas">
             <img
-              src="/public/files/2.webp"
+              src="/files/2.webp"
               alt="Repas complet : entrée, plat et dessert"
               loading="lazy"
             />
@@ -60,7 +72,7 @@
           <div class="step__meta">
             <div class="step__badge">
               <span class="step__num" aria-hidden="true">2</span>
-              <span class="muted">Étape 2</span>
+              <span class="muted">Pause • chaleur • calme</span>
             </div>
 
             <h3 class="step__title">Bains — accès détente</h3>
@@ -77,7 +89,7 @@
 
           <figure class="media" aria-label="Image étape 2 - bains">
             <img
-              src="/public/files/1.webp"
+              src="/files/1.webp"
               alt="Bains : ambiance chaude et détente"
               loading="lazy"
             />
