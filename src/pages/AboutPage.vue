@@ -9,12 +9,11 @@
             <h1>Le Bon</h1>
           </div>
         </div>
-
       </div>
 
       <div class="chips" aria-label="Informations rapides">
-        <span class="chip">🔒 Protégé</span>
-        <span class="chip">📄 PDF</span>
+        <span class="chip">🔒 Hautement sécurisé</span>
+        <span class="chip">📄 Format PDF</span>
         <span class="chip">⬇️ Téléchargeable</span>
       </div>
     </header>
@@ -23,8 +22,7 @@
       <!-- Accès -->
       <article class="card card--accent stack" aria-label="Accès au document">
         <div class="section-title">
-          <h2>Accès</h2>
-          <span class="muted">Déverrouiller l’aperçu</span>
+          <h2>Déverrouiller</h2>
         </div>
 
         <form class="stack" @submit.prevent="unlock">
@@ -49,14 +47,14 @@
                 :disabled="loading"
                 :aria-pressed="showPassword"
               >
-                {{ showPassword ? "Masquer" : "Afficher" }}
+                {{ showPassword ? 'Masquer' : 'Afficher' }}
               </button>
             </div>
           </label>
 
           <div class="row" style="gap: 10px">
             <button class="btn btn--ember" type="submit" :disabled="loading || !password">
-              {{ loading ? "Déverrouillage..." : "Déverrouiller" }}
+              {{ loading ? 'Déverrouillage...' : 'Déverrouiller' }}
             </button>
 
             <a
@@ -69,9 +67,7 @@
               Ouvrir dans un nouvel onglet
             </a>
 
-            <a v-if="unlocked" class="btn btn--ghost" :href="pdfUrl" download>
-              Télécharger
-            </a>
+            <a v-if="unlocked" class="btn btn--ghost" :href="pdfUrl" download> Télécharger </a>
           </div>
 
           <p v-if="status" class="muted" role="status">{{ status }}</p>
@@ -91,18 +87,44 @@
           <div class="section-title" style="margin: 0">
             <h2>Aperçu</h2>
             <span class="muted">
-              <template v-if="unlocked && numPages">
-                Page {{ pageNum }} / {{ numPages }}
-              </template>
+              <template v-if="unlocked && numPages"> Page {{ pageNum }} / {{ numPages }} </template>
               <template v-else>Verrouillé</template>
             </span>
           </div>
 
           <div v-if="unlocked" class="row" style="gap: 8px">
-            <button class="btn btn--ghost" type="button" @click="prevPage" :disabled="loading || pageNum <= 1">←</button>
-            <button class="btn btn--ghost" type="button" @click="nextPage" :disabled="loading || pageNum >= numPages">→</button>
-            <button class="btn btn--ghost" type="button" @click="zoomOut" :disabled="loading || scale <= 0.7">−</button>
-            <button class="btn btn--ghost" type="button" @click="zoomIn" :disabled="loading || scale >= 2.2">+</button>
+            <button
+              class="btn btn--ghost"
+              type="button"
+              @click="prevPage"
+              :disabled="loading || pageNum <= 1"
+            >
+              ←
+            </button>
+            <button
+              class="btn btn--ghost"
+              type="button"
+              @click="nextPage"
+              :disabled="loading || pageNum >= numPages"
+            >
+              →
+            </button>
+            <button
+              class="btn btn--ghost"
+              type="button"
+              @click="zoomOut"
+              :disabled="loading || scale <= 0.7"
+            >
+              −
+            </button>
+            <button
+              class="btn btn--ghost"
+              type="button"
+              @click="zoomIn"
+              :disabled="loading || scale >= 2.2"
+            >
+              +
+            </button>
           </div>
         </div>
 
@@ -122,34 +144,33 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, ref } from "vue";
-import * as pdfjsLib from "pdfjs-dist";
-import workerSrc from "pdfjs-dist/build/pdf.worker.min?url";
+import { nextTick, onBeforeUnmount, ref } from 'vue'
+import * as pdfjsLib from 'pdfjs-dist'
+import workerSrc from 'pdfjs-dist/build/pdf.worker.min?url'
+;(pdfjsLib as any).GlobalWorkerOptions.workerSrc = workerSrc
 
-(pdfjsLib as any).GlobalWorkerOptions.workerSrc = workerSrc;
+const pdfUrl = '/files/bon.pdf'
 
-const pdfUrl = "/files/bon.pdf";
+const password = ref('')
+const showPassword = ref(false)
+const status = ref<string | null>(null)
+const loading = ref(false)
+const unlocked = ref(false)
 
-const password = ref("");
-const showPassword = ref(false);
-const status = ref<string | null>(null);
-const loading = ref(false);
-const unlocked = ref(false);
+const canvasEl = ref<HTMLCanvasElement | null>(null)
 
-const canvasEl = ref<HTMLCanvasElement | null>(null);
+const pageNum = ref(1)
+const numPages = ref(0)
+const scale = ref(1.2)
 
-const pageNum = ref(1);
-const numPages = ref(0);
-const scale = ref(1.2);
-
-let pdfDoc: any = null;
-let renderTask: any = null;
+let pdfDoc: any = null
+let renderTask: any = null
 
 async function unlock() {
-  status.value = null;
-  loading.value = true;
+  status.value = null
+  loading.value = true
 
-  await cleanupPdf();
+  await cleanupPdf()
 
   try {
     const task = (pdfjsLib as any).getDocument({
@@ -157,100 +178,107 @@ async function unlock() {
       password: password.value,
       disableRange: true,
       disableStream: true,
-    });
+    })
 
-    pdfDoc = await task.promise;
+    pdfDoc = await task.promise
 
-    numPages.value = pdfDoc.numPages || 0;
-    pageNum.value = 1;
-    unlocked.value = true;
+    numPages.value = pdfDoc.numPages || 0
+    pageNum.value = 1
+    unlocked.value = true
 
-    await nextTick();
-    await renderPage();
-    status.value = "OK — document déverrouillé.";
+    await nextTick()
+    await renderPage()
+    status.value = 'OK — document déverrouillé.'
   } catch (e: any) {
-    unlocked.value = false;
-    numPages.value = 0;
-    pageNum.value = 1;
+    unlocked.value = false
+    numPages.value = 0
+    pageNum.value = 1
 
-    const msg = String(e?.message || "").toLowerCase();
-    if (msg.includes("password")) status.value = "Mot de passe incorrect.";
-    else if (msg.includes("missing") && msg.includes("pdf")) status.value = "PDF introuvable. Vérifie public/files/bon.pdf";
-    else status.value = "Impossible d’ouvrir le PDF (vérifie le chiffrement).";
+    const msg = String(e?.message || '').toLowerCase()
+    if (msg.includes('password')) status.value = 'Mot de passe incorrect.'
+    else if (msg.includes('missing') && msg.includes('pdf'))
+      status.value = 'PDF introuvable. Vérifie public/files/bon.pdf'
+    else status.value = 'Impossible d’ouvrir le PDF (vérifie le chiffrement).'
   } finally {
-    loading.value = false;
+    loading.value = false
   }
 }
 
 async function renderPage() {
-  if (!pdfDoc || !canvasEl.value) return;
+  if (!pdfDoc || !canvasEl.value) return
 
   if (renderTask?.cancel) {
-    try { renderTask.cancel(); } catch (_) {}
+    try {
+      renderTask.cancel()
+    } catch (_) {}
   }
 
-  loading.value = true;
+  loading.value = true
 
-  const page = await pdfDoc.getPage(pageNum.value);
-  const viewport = page.getViewport({ scale: scale.value });
-  const canvas = canvasEl.value;
-  const ctx = canvas.getContext("2d");
+  const page = await pdfDoc.getPage(pageNum.value)
+  const viewport = page.getViewport({ scale: scale.value })
+  const canvas = canvasEl.value
+  const ctx = canvas.getContext('2d')
 
   if (!ctx) {
-    loading.value = false;
-    return;
+    loading.value = false
+    return
   }
 
-  canvas.width = Math.floor(viewport.width);
-  canvas.height = Math.floor(viewport.height);
+  canvas.width = Math.floor(viewport.width)
+  canvas.height = Math.floor(viewport.height)
 
-  renderTask = page.render({ canvasContext: ctx, viewport });
+  renderTask = page.render({ canvasContext: ctx, viewport })
   try {
-    await renderTask.promise;
+    await renderTask.promise
   } finally {
-    loading.value = false;
+    loading.value = false
   }
 }
 
 function prevPage() {
-  if (pageNum.value <= 1) return;
-  pageNum.value -= 1;
-  renderPage();
+  if (pageNum.value <= 1) return
+  pageNum.value -= 1
+  renderPage()
 }
 
 function nextPage() {
-  if (pageNum.value >= numPages.value) return;
-  pageNum.value += 1;
-  renderPage();
+  if (pageNum.value >= numPages.value) return
+  pageNum.value += 1
+  renderPage()
 }
 
 function zoomIn() {
-  if (scale.value >= 2.2) return;
-  scale.value = Math.round((scale.value + 0.1) * 10) / 10;
-  renderPage();
+  if (scale.value >= 2.2) return
+  scale.value = Math.round((scale.value + 0.1) * 10) / 10
+  renderPage()
 }
 
 function zoomOut() {
-  if (scale.value <= 0.7) return;
-  scale.value = Math.round((scale.value - 0.1) * 10) / 10;
-  renderPage();
+  if (scale.value <= 0.7) return
+  scale.value = Math.round((scale.value - 0.1) * 10) / 10
+  renderPage()
 }
 
 async function cleanupPdf() {
   if (renderTask?.cancel) {
-    try { renderTask.cancel(); } catch (_) {}
+    try {
+      renderTask.cancel()
+    } catch (_) {}
   }
-  renderTask = null;
+  renderTask = null
 
   if (pdfDoc?.destroy) {
-    try { await pdfDoc.destroy(); } catch (_) {}
+    try {
+      await pdfDoc.destroy()
+    } catch (_) {}
   }
-  pdfDoc = null;
+  pdfDoc = null
 }
 
 onBeforeUnmount(() => {
-  cleanupPdf();
-});
+  cleanupPdf()
+})
 </script>
 
 <style scoped src="@/styles/bon.css"></style>

@@ -23,8 +23,7 @@
       <div class="split">
         <article class="card card--accent split__left">
           <div class="section-title">
-            <h2>Contact & accès</h2>
-            <span class="muted">Adresse, horaires, itinéraire</span>
+            <h2>Informations générales</h2>
           </div>
 
           <ul class="info-list">

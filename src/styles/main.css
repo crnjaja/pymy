@@ -1,55 +1,71 @@
 /* =========================================================
-   MAIN.CSS — Terre moderne (coins carrés), juste milieu
-   (ni trop sombre/monotone, ni trop clair/fade)
-   + intégration forte d’un ocre "terre battue"
+   MAIN.CSS — Terre Moderne 2.0 (clair, créatif, très “UI”)
+   - coins carrés (0px)
+   - palette chaude + ocre fort
+   - surfaces “glass-paper”, textures CSS, micro-interactions
+   - cohérence stricte via tokens
    ========================================================= */
 
 /* ---------------------------
    Tokens
    --------------------------- */
 :root {
-  /* --- Core palette (terre, équilibrée) --- */
-  --bg: #1b1410; /* fond espresso chaud (pas noir) */
-  --panel: #241913; /* surface principale (cartes/panels) */
-  --panel-2: #2b1e17; /* surface secondaire légèrement plus claire */
-  --text: #fff3e8; /* ivoire chaud */
-  --muted: rgba(255, 243, 232, 0.74);
-
-  /* Brand */
-  --brand: #ffd2a6; /* sable abricot */
-  --brand-2: #ffbf7a; /* ocre clair */
-  --brand-ink: #1f110a; /* texte dark sur surfaces claires */
-
-  /* Accents (terre) */
-  --terra: #e2725b; /* terre battue */
-  --ember: #cc5500; /* orange brûlé */
-  --brick: #b7410e; /* rouge brique */
-
-  /* OCRE "terre battue" (accent principal demandé) */
-  --ochre: #d28b3e; /* ocre chaud, plus présent */
-  --ochre-2: #b86a21; /* ocre profond pour contrastes */
-
-  /* UI tokens */
-  --border: rgba(255, 243, 232, 0.16);
-  --border-2: rgba(210, 139, 62, 0.26);
-  --shadow: 0 18px 46px rgba(0, 0, 0, 0.44);
-  --shadow-2: 0 10px 24px rgba(0, 0, 0, 0.3);
-
+  /* Geometry */
   --radius: 0px; /* square corners */
   --maxw: 1100px;
 
-  /* Layout rhythm */
+  /* Spacing (rythme) */
   --g1: 10px;
   --g2: 14px;
   --g3: 18px;
   --g4: 28px;
 
-  /* Focus */
-  --focus: rgba(210, 139, 62, 0.55);
+  /* Typography */
+  --fs-1: clamp(30px, 4vw, 48px);
+  --fs-2: 18px;
+  --fs-3: 16px;
+  --lh: 1.7;
+
+  /* Core palette (terre claire, moderne) */
+  --bg: #f7f1e7; /* crème chaude */
+  --bg-2: #efe3d3; /* sable */
+  --surface: #ffffff; /* papier */
+  --surface-2: #fbf4ea; /* papier chaud */
+  --surface-3: #f4eadc; /* couche (stats/aside) */
+
+  --text: #241a14; /* cacao profond (pas noir) */
+  --muted: rgba(36, 26, 20, 0.68);
+
+  /* Earth accents */
+  --ochre: #c87922; /* ocre principal */
+  --ochre-2: #a75814; /* ocre profond */
+  --terra: #d7664c; /* terre battue */
+  --ember: #c45417; /* orange brulé */
+  --brick: #9f3711; /* brique */
+
+  /* UI tokens */
+  --border: rgba(36, 26, 20, 0.14);
+  --border-strong: rgba(36, 26, 20, 0.22);
+  --accent-border: rgba(200, 121, 34, 0.42);
+
+  --shadow: 0 18px 44px rgba(30, 20, 14, 0.14);
+  --shadow-2: 0 10px 24px rgba(30, 20, 14, 0.1);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+  --focus: rgba(200, 121, 34, 0.48);
+
+  /* Optional link color (modern + lisible) */
+  --link: #8b3f0b;
+
+  /* Header glass */
+  --glass: rgba(255, 255, 255, 0.72);
+
+  /* High-contrast ink for tinted buttons */
+  --ink: #1f120b;
 }
 
 /* ---------------------------
-   Base / fond global (anti-rupture)
+   Base
    --------------------------- */
 * {
   box-sizing: border-box;
@@ -75,24 +91,36 @@ body {
     'Segoe UI Emoji';
   color: var(--text);
   background: var(--bg);
+  text-rendering: optimizeLegibility;
 }
 
-/* Fond fixe, indépendant de la hauteur des sections */
+/* Fond “design” moderne: gradients + texture CSS (sans image) */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(1150px 760px at 14% 0%, rgba(210, 139, 62, 0.22), transparent 58%),
-    radial-gradient(900px 620px at 88% 12%, rgba(226, 114, 91, 0.16), transparent 56%),
-    radial-gradient(860px 560px at 72% 92%, rgba(204, 85, 0, 0.1), transparent 58%),
-    linear-gradient(180deg, rgba(255, 210, 166, 0.06), transparent 40%), var(--bg);
+    /* grands halos */
+    radial-gradient(1100px 720px at 12% -6%, rgba(200, 121, 34, 0.22), transparent 58%),
+    radial-gradient(900px 640px at 92% 12%, rgba(215, 102, 76, 0.16), transparent 56%),
+    radial-gradient(860px 560px at 70% 92%, rgba(196, 84, 23, 0.12), transparent 58%),
+    /* voile lumineux pour garder le site clair */
+      linear-gradient(180deg, rgba(255, 255, 255, 0.75), transparent 52%),
+    /* texture discrète */
+      repeating-linear-gradient(
+        135deg,
+        rgba(36, 26, 20, 0.028) 0px,
+        rgba(36, 26, 20, 0.028) 1px,
+        transparent 1px,
+        transparent 9px
+      ),
+    /* base */ linear-gradient(180deg, var(--bg), var(--bg-2));
 }
 
 /* Liens */
 a {
-  color: inherit;
+  color: var(--link);
   text-decoration: none;
 }
 a:hover {
@@ -134,14 +162,20 @@ a:hover {
   grid-template-rows: auto 1fr auto;
 }
 
+/* Header: glass clair + accent subtil */
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-
   border-bottom: 1px solid var(--border);
-  background: rgba(36, 25, 19, 0.72);
+  background: var(--glass);
   backdrop-filter: blur(10px);
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .header {
+    background: rgba(255, 255, 255, 0.9);
+  }
 }
 
 .header__inner {
@@ -152,12 +186,12 @@ a:hover {
   gap: 16px;
 }
 
-/* Brand (logo + texte) */
+/* Brand */
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.2px;
 }
 
@@ -165,7 +199,7 @@ a:hover {
   width: 34px;
   height: 34px;
   object-fit: contain;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 10px 18px rgba(30, 20, 14, 0.14));
 }
 
 .brand__text {
@@ -182,10 +216,10 @@ a:hover {
 .brand__tag {
   font-size: 12px;
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 650;
 }
 
-/* Nav */
+/* Nav — modern “tabs” carrées */
 .nav {
   display: flex;
   gap: 10px;
@@ -194,22 +228,40 @@ a:hover {
 }
 
 .nav__link {
+  position: relative;
   padding: 8px 10px;
   border: 1px solid transparent;
   background: transparent;
   text-decoration: none;
+  color: var(--text);
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    transform 140ms ease;
 }
 
 .nav__link:hover {
   text-decoration: none;
-  border-color: rgba(255, 243, 232, 0.14);
-  background: rgba(255, 210, 166, 0.06);
+  border-color: rgba(36, 26, 20, 0.16);
+  background: rgba(200, 121, 34, 0.1);
+  transform: translateY(-1px);
 }
 
 .nav__link.router-link-active {
-  border-color: var(--border-2);
-  background: linear-gradient(90deg, rgba(210, 139, 62, 0.22), rgba(226, 114, 91, 0.1));
+  border-color: var(--accent-border);
+  background: linear-gradient(90deg, rgba(200, 121, 34, 0.18), rgba(215, 102, 76, 0.1));
   text-decoration: none;
+}
+
+/* barre d’accent moderne */
+.nav__link.router-link-active::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ochre), var(--terra), var(--ember));
 }
 
 /* Main */
@@ -220,7 +272,7 @@ main.container {
 /* Footer */
 .footer {
   border-top: 1px solid var(--border);
-  background: rgba(36, 25, 19, 0.55);
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .footer__inner {
@@ -236,25 +288,27 @@ main.container {
    Typography
    --------------------------------------------------------- */
 h1 {
-  font-size: clamp(30px, 4vw, 46px);
+  font-size: var(--fs-1);
   margin: 0 0 10px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 h2 {
   margin: 0 0 8px;
-  font-size: 18px;
+  font-size: var(--fs-2);
+  letter-spacing: -0.01em;
 }
 
 h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--fs-2);
+  letter-spacing: -0.01em;
 }
 
 .lead {
   margin: 0 0 16px;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: var(--lh);
   max-width: 75ch;
 }
 
@@ -263,33 +317,50 @@ h3 {
 }
 
 /* ---------------------------------------------------------
-   Cards
+   Cards — “paper UI” moderne avec corner accent
    --------------------------------------------------------- */
 .card {
   border: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(210, 139, 62, 0.1), rgba(36, 25, 19, 0.92));
+  background:
+    /* micro-highlight */
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+    /* warm tint bas */ linear-gradient(180deg, rgba(200, 121, 34, 0.06), rgba(255, 255, 255, 0));
   box-shadow: var(--shadow);
   border-radius: var(--radius);
   padding: 16px;
   position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  /* corner accent “ticket cut” (carré mais stylé) */
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(200, 121, 34, 0.22), rgba(215, 102, 76, 0.1));
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 .card--soft {
-  background: rgba(43, 30, 23, 0.82);
+  background: var(--surface-2);
   box-shadow: var(--shadow-2);
 }
 
 .card--accent {
-  overflow: hidden;
+  padding-top: 18px;
 }
 
 .card--accent::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
-  height: 3px;
+  height: 4px;
   background: linear-gradient(90deg, var(--ochre), var(--terra), var(--ember));
-  opacity: 0.98;
 }
 
 /* ---------------------------------------------------------
@@ -308,16 +379,34 @@ h3 {
 }
 
 /* ---------------------------------------------------------
-   Hero (avec logo / signature)
+   Hero — moderne, clair, “signature” ocre
    --------------------------------------------------------- */
 .hero {
   padding: 18px;
   border: 1px solid var(--border);
   background:
-    radial-gradient(920px 520px at 18% 0%, rgba(210, 139, 62, 0.22), transparent 58%),
-    radial-gradient(920px 560px at 88% 15%, rgba(226, 114, 91, 0.18), transparent 60%),
-    rgba(36, 25, 19, 0.86);
+    radial-gradient(920px 560px at 14% 0%, rgba(200, 121, 34, 0.26), transparent 60%),
+    radial-gradient(920px 560px at 90% 18%, rgba(215, 102, 76, 0.18), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72));
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* fine “grid” super subtile */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(36, 26, 20, 0.035) 0px,
+    rgba(36, 26, 20, 0.035) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .hero__top {
@@ -326,6 +415,8 @@ h3 {
   justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .hero__brand {
@@ -338,7 +429,7 @@ h3 {
   width: 84px;
   height: 84px;
   object-fit: contain;
-  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.36));
+  filter: drop-shadow(0 16px 28px rgba(30, 20, 14, 0.16));
 }
 
 .kicker {
@@ -348,7 +439,7 @@ h3 {
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 210, 166, 0.9);
+  color: rgba(167, 88, 20, 0.92);
 }
 
 .kicker::before {
@@ -356,17 +447,19 @@ h3 {
   width: 10px;
   height: 10px;
   background: linear-gradient(135deg, var(--ochre), var(--ember));
-  border: 1px solid rgba(255, 210, 166, 0.26);
+  border: 1px solid rgba(200, 121, 34, 0.55);
 }
 
 /* ---------------------------------------------------------
-   Chips
+   Chips — modernes, carrées, contraste propre
    --------------------------------------------------------- */
 .chips {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 14px;
+  position: relative;
+  z-index: 1;
 }
 
 .chip {
@@ -374,14 +467,15 @@ h3 {
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  border: 1px solid rgba(210, 139, 62, 0.26);
-  background: rgba(210, 139, 62, 0.1);
+  border: 1px solid rgba(200, 121, 34, 0.4);
+  background: linear-gradient(180deg, rgba(200, 121, 34, 0.14), rgba(255, 255, 255, 0.62));
   color: var(--text);
   font-size: 13px;
+  box-shadow: var(--shadow-inset);
 }
 
 /* ---------------------------------------------------------
-   Buttons (coin carré)
+   Buttons — modern “flat-depth” (sans arrondis)
    --------------------------------------------------------- */
 .btn {
   display: inline-flex;
@@ -391,64 +485,76 @@ h3 {
   padding: 10px 14px;
 
   border-radius: var(--radius);
-  border: 1px solid rgba(210, 139, 62, 0.48);
+  border: 1px solid rgba(200, 121, 34, 0.58);
 
-  background: linear-gradient(180deg, rgba(210, 139, 62, 0.44), rgba(210, 139, 62, 0.18));
-  color: var(--text);
+  background:
+    linear-gradient(180deg, rgba(200, 121, 34, 0.32), rgba(200, 121, 34, 0.14)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  color: var(--ink);
 
   cursor: pointer;
   text-decoration: none;
 
+  box-shadow: var(--shadow-inset);
   transition:
     transform 140ms ease,
-    background 140ms ease,
+    box-shadow 140ms ease,
     border-color 140ms ease,
-    box-shadow 140ms ease;
+    filter 140ms ease;
 }
 
 .btn:hover {
   text-decoration: none;
-  border-color: rgba(255, 210, 166, 0.55);
-  background: linear-gradient(180deg, rgba(210, 139, 62, 0.56), rgba(210, 139, 62, 0.22));
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+  border-color: rgba(200, 121, 34, 0.78);
   transform: translateY(-1px);
+  filter: saturate(1.05);
+  box-shadow: var(--shadow-2);
 }
 
 .btn:active {
   transform: translateY(0);
 }
 
+/* Ghost */
 .btn--ghost {
-  border-color: rgba(255, 243, 232, 0.16);
-  background: rgba(255, 243, 232, 0.06);
+  border-color: rgba(36, 26, 20, 0.18);
+  background: rgba(255, 255, 255, 0.7);
   color: var(--text);
 }
 
 .btn--ghost:hover {
-  background: rgba(255, 210, 166, 0.08);
-  border-color: rgba(210, 139, 62, 0.34);
+  border-color: rgba(200, 121, 34, 0.45);
+  background: rgba(200, 121, 34, 0.1);
 }
 
+/* Terra */
 .btn--terra {
-  border-color: rgba(226, 114, 91, 0.54);
-  background: linear-gradient(180deg, rgba(226, 114, 91, 0.28), rgba(226, 114, 91, 0.1));
+  border-color: rgba(215, 102, 76, 0.55);
+  background:
+    linear-gradient(180deg, rgba(215, 102, 76, 0.22), rgba(215, 102, 76, 0.1)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  color: var(--ink);
 }
 
 .btn--terra:hover {
-  background: linear-gradient(180deg, rgba(226, 114, 91, 0.36), rgba(226, 114, 91, 0.12));
+  border-color: rgba(215, 102, 76, 0.75);
 }
 
+/* Ember */
 .btn--ember {
-  border-color: rgba(204, 85, 0, 0.58);
-  background: linear-gradient(180deg, rgba(204, 85, 0, 0.26), rgba(204, 85, 0, 0.1));
+  border-color: rgba(196, 84, 23, 0.58);
+  background:
+    linear-gradient(180deg, rgba(196, 84, 23, 0.2), rgba(196, 84, 23, 0.1)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  color: var(--ink);
 }
 
 .btn--ember:hover {
-  background: linear-gradient(180deg, rgba(204, 85, 0, 0.34), rgba(204, 85, 0, 0.12));
+  border-color: rgba(196, 84, 23, 0.78);
 }
 
 /* ---------------------------------------------------------
-   Forms
+   Forms — clean, moderne, focus premium
    --------------------------------------------------------- */
 .field {
   display: grid;
@@ -465,16 +571,24 @@ textarea {
   width: 100%;
   padding: 10px 12px;
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 243, 232, 0.16);
-  background: rgba(18, 11, 8, 0.32);
+  border: 1px solid rgba(36, 26, 20, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.7));
   color: var(--text);
   outline: none;
+  box-shadow: var(--shadow-inset);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(36, 26, 20, 0.45);
 }
 
 input:focus,
 textarea:focus {
-  border-color: var(--focus);
-  box-shadow: 0 0 0 3px rgba(210, 139, 62, 0.14);
+  border-color: rgba(200, 121, 34, 0.62);
+  box-shadow:
+    0 0 0 3px rgba(200, 121, 34, 0.18),
+    var(--shadow-inset);
 }
 
 /* ---------------------------------------------------------
@@ -505,7 +619,7 @@ textarea:focus {
   }
 }
 
-/* Spotlight (home hero) */
+/* Spotlight */
 .spotlight {
   display: grid;
   gap: var(--g2);
@@ -529,10 +643,22 @@ textarea:focus {
   align-content: start;
 }
 
+/* Stats — modernes, lisibles */
 .stat {
-  border: 1px solid rgba(210, 139, 62, 0.26);
-  background: rgba(210, 139, 62, 0.1);
+  border: 1px solid rgba(200, 121, 34, 0.34);
+  background: var(--surface-3);
   padding: 12px;
+  box-shadow: var(--shadow-inset);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(200, 121, 34, 0.8), rgba(196, 84, 23, 0.6));
 }
 
 .stat__k {
@@ -580,8 +706,9 @@ textarea:focus {
   gap: 10px;
   width: fit-content;
   padding: 8px 10px;
-  border: 1px solid rgba(210, 139, 62, 0.26);
-  background: rgba(210, 139, 62, 0.1);
+  border: 1px solid rgba(200, 121, 34, 0.34);
+  background: rgba(200, 121, 34, 0.1);
+  box-shadow: var(--shadow-inset);
 }
 
 .step__num {
@@ -590,10 +717,9 @@ textarea:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  border: 1px solid rgba(255, 210, 166, 0.5);
-  background: rgba(255, 210, 166, 0.22);
-  color: var(--brand-ink);
+  border: 1px solid rgba(200, 121, 34, 0.62);
+  background: linear-gradient(180deg, rgba(200, 121, 34, 0.28), rgba(255, 255, 255, 0.65));
+  color: var(--ink);
   font-weight: 900;
 }
 
@@ -605,7 +731,7 @@ textarea:focus {
 .step__subtitle {
   margin: 0;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: var(--lh);
   text-align: justify;
   hyphens: auto;
 }
@@ -614,15 +740,16 @@ textarea:focus {
   margin: 0;
   padding-left: 18px;
   color: var(--text);
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 /* Media frame */
 .media {
-  border: 1px solid rgba(255, 243, 232, 0.16);
-  background: rgba(210, 139, 62, 0.06);
+  border: 1px solid rgba(36, 26, 20, 0.16);
+  background: rgba(200, 121, 34, 0.06);
   overflow: hidden;
   min-height: 260px;
+  box-shadow: var(--shadow-2);
 }
 
 .media img {
@@ -631,7 +758,7 @@ textarea:focus {
   height: 100%;
   max-height: 360px;
   object-fit: cover;
-  filter: saturate(1.05) contrast(1.05);
+  filter: saturate(1.03) contrast(1.03);
 }
 
 /* CTA row */
@@ -679,7 +806,7 @@ textarea:focus {
   grid-template-columns: 110px 1fr;
   gap: 10px;
   align-items: start;
-  border-top: 1px solid rgba(255, 243, 232, 0.12);
+  border-top: 1px solid rgba(36, 26, 20, 0.12);
   padding-top: 10px;
 }
 
@@ -700,8 +827,8 @@ textarea:focus {
 }
 
 .map-frame {
-  border: 1px solid rgba(255, 243, 232, 0.16);
-  background: rgba(210, 139, 62, 0.06);
+  border: 1px solid rgba(36, 26, 20, 0.16);
+  background: rgba(200, 121, 34, 0.06);
   box-shadow: var(--shadow);
 }
 
@@ -717,7 +844,7 @@ textarea:focus {
   width: 100%;
   height: 100%;
   border: 0;
-  filter: saturate(1.05) contrast(1.05);
+  filter: saturate(1.02) contrast(1.02);
 }
 
 /* ---------------------------------------------------------
@@ -729,7 +856,57 @@ textarea:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn {
+  .btn,
+  .nav__link {
     transition: none;
+  }
+}
+
+/* ---------------------------------------------------------
+   (Optionnel) Dark mode auto — cohérent avec la nouvelle UI
+   - si tu veux FORCER light: supprime ce bloc
+   --------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16110d;
+    --bg-2: #1f1712;
+    --surface: #1f1712;
+    --surface-2: #241b15;
+    --surface-3: #2a2019;
+
+    --text: #fff4ea;
+    --muted: rgba(255, 244, 234, 0.72);
+
+    --border: rgba(255, 244, 234, 0.14);
+    --border-strong: rgba(255, 244, 234, 0.22);
+    --accent-border: rgba(200, 121, 34, 0.46);
+
+    --shadow: 0 18px 46px rgba(0, 0, 0, 0.44);
+    --shadow-2: 0 10px 24px rgba(0, 0, 0, 0.3);
+    --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    --glass: rgba(31, 23, 18, 0.66);
+    --link: #ffd2a6;
+    --ink: #1a0f09;
+  }
+
+  body::before {
+    background:
+      radial-gradient(1100px 720px at 12% -6%, rgba(200, 121, 34, 0.18), transparent 58%),
+      radial-gradient(900px 640px at 92% 12%, rgba(215, 102, 76, 0.14), transparent 56%),
+      radial-gradient(860px 560px at 70% 92%, rgba(196, 84, 23, 0.1), transparent 58%),
+      linear-gradient(180deg, rgba(255, 210, 166, 0.06), transparent 50%),
+      repeating-linear-gradient(
+        135deg,
+        rgba(255, 244, 234, 0.03) 0px,
+        rgba(255, 244, 234, 0.03) 1px,
+        transparent 1px,
+        transparent 9px
+      ),
+      linear-gradient(180deg, var(--bg), var(--bg-2));
+  }
+
+  .card::after {
+    opacity: 0.55;
   }
 }
