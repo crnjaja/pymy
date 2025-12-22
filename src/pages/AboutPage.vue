@@ -18,7 +18,7 @@
       </div>
     </header>
 
-    <div class="bon-grid">
+    <div class="bon-grid" :class="{ 'bon-grid--locked': !unlocked }">
       <!-- Accès -->
       <article class="card card--accent stack" aria-label="Accès au document">
         <div class="section-title">

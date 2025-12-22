@@ -65,3 +65,30 @@
   background: rgba(255, 243, 232, 0.04);
   padding: 12px;
 }
+
+/* --- Même hauteur des 2 cards quand le bon est verrouillé --- */
+.bon-grid--locked {
+  align-items: stretch; /* au lieu de start */
+}
+
+.bon-grid--locked > article {
+  height: 100%;
+}
+
+/* Le viewer doit pouvoir étirer son contenu */
+.bon-grid--locked > article[aria-label='Aperçu du PDF'] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Le bloc "locked" remplit la hauteur restante (centrage OK) */
+.bon-grid--locked > article[aria-label='Aperçu du PDF'] .locked {
+  flex: 1;
+  min-height: 0; /* on neutralise le min-height fixe */
+}
+
+/* (Optionnel) si tu veux aussi que le canvas prenne la place quand c'est déverrouillé */
+.bon-grid--locked > article[aria-label='Aperçu du PDF'] .canvas-wrap {
+  flex: 1;
+  min-height: 0;
+}

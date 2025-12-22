@@ -957,4 +957,35 @@ textarea:focus {
   .card::after {
     opacity: 0.55;
   }
+
+  .menu-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+
+    padding: 10px 12px;
+    border: 1px solid rgba(200, 121, 34, 0.42);
+    background: rgba(255, 255, 255, 0.62);
+    box-shadow: var(--shadow-inset);
+
+    color: var(--text);
+    text-decoration: none;
+    transition:
+      transform 140ms ease,
+      border-color 140ms ease,
+      background 140ms ease;
+  }
+
+  .menu-pdf:hover {
+    border-color: rgba(200, 121, 34, 0.7);
+    background: rgba(200, 121, 34, 0.1);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .menu-pdf__hint {
+    color: var(--muted);
+    font-size: 13px;
+  }
 }

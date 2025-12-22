@@ -10,7 +10,7 @@
       </RouterLink>
 
       <nav class="nav">
-        <RouterLink class="nav__link" to="/">Expérience</RouterLink>
+        <RouterLink class="nav__link" to="/">L'Expérience</RouterLink>
         <RouterLink class="nav__link" to="/le-bon">Le Bon</RouterLink>
         <RouterLink class="nav__link" to="/contact">Contact</RouterLink>
       </nav>

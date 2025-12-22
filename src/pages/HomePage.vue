@@ -7,7 +7,7 @@
             <img class="hero__logo" src="/files/logo.png" alt="Logo" />
             <div>
               <div class="kicker">Expérience en plusieurs étapes</div>
-              <h1>Repas complet & accès aux bains</h1>
+              <h1>Quartier LôDzè - Martigny</h1>
             </div>
           </div>
         </div>
@@ -16,7 +16,7 @@
           <span class="chip">⏱️ Durée : ~3h</span>
           <span class="chip">🍽️ Menu complet</span>
           <span class="chip">🛁 Accès bains</span>
-          <span class="chip">📍 Sur réservation</span>
+          <span class="chip">⏳ Réserver avant le <strong>02.11.2026</strong></span>
         </div>
       </header>
 
@@ -42,6 +42,15 @@
               par personne : une entrée, un plat et un dessert. Option : si tu choisis la Côte de
               bœuf, un supplément de CHF 45.– par personne sera à régler sur place.
             </p>
+
+            <a
+              class="menu-pdf"
+              href="/files/menu-quartier-lodze.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              📄 Menu (PDF) <span class="menu-pdf__hint">— s’ouvre dans un nouvel onglet</span>
+            </a>
           </div>
 
           <figure class="media" aria-label="Image étape 1 - repas">
