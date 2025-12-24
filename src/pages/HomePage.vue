@@ -6,7 +6,7 @@
           <div class="hero__brand">
             <img class="hero__logo" src="/files/logo.png" alt="Logo" />
             <div>
-              <div class="kicker">Noël 2026 : une expérience en plusieurs étapes</div>
+              <div class="kicker">Noël 2025 : une expérience en plusieurs étapes</div>
               <h1>Quartier LôDzè - Martigny</h1>
             </div>
           </div>
