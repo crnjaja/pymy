@@ -74,7 +74,7 @@
 
           <div class="hint">
             <p class="muted" style="margin: 0">
-              Note : cette page ne “protège” pas l’URL. La vraie protection vient du
+              Note : la protection vient du
               <strong>chiffrement du PDF</strong> (mot de passe à l’ouverture).
             </p>
           </div>

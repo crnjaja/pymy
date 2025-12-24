@@ -6,7 +6,7 @@
           <div class="hero__brand">
             <img class="hero__logo" src="/files/logo.png" alt="Logo" />
             <div>
-              <div class="kicker">Expérience en plusieurs étapes</div>
+              <div class="kicker">Noël 2026 : une expérience en plusieurs étapes</div>
               <h1>Quartier LôDzè - Martigny</h1>
             </div>
           </div>
@@ -37,10 +37,9 @@
               et parfois surprenants, avec une attention portée à chaque détail.
             </p>
             <p class="step__subtitle">
-              Les menus changent selon les saisons et mettent en avant des produits locaux
-              soigneusement choisis dans un rayon de 180 km. Lors de ta visite, tu pourras choisir
-              par personne : une entrée, un plat et un dessert. Option : si tu choisis la Côte de
-              bœuf, un supplément de CHF 45.– par personne sera à régler sur place.
+              Lors de ta visite, tu pourras choisir par personne : une entrée, un plat et un
+              dessert. Option : si tu choisis la Côte de bœuf, un supplément de CHF 45.– par
+              personne sera à régler sur place.
             </p>
 
             <a
@@ -77,9 +76,8 @@
               réparation.
             </p>
             <p class="step__subtitle">
-              Chaque session dure 90 minutes et il faut réserver à l’avance. À Martigny, ces bains
-              offrent une parenthèse bien-être inspirée de l’héritage romain, entre design, chaleur
-              et sérénité.
+              Chaque session dure 90 minutes et il faut réserver à l’avance. Ces bains offrent une
+              parenthèse bien-être inspirée de l’héritage romain, entre design, chaleur et sérénité.
             </p>
           </div>
 

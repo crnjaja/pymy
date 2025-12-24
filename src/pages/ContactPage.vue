@@ -7,7 +7,7 @@
             <img class="hero__logo" src="/files/logo.png" alt="Logo" />
             <div>
               <div class="kicker">Contact</div>
-              <h1>Nous trouver & nous joindre</h1>
+              <h1>Trouver & joindre</h1>
             </div>
           </div>
         </div>
