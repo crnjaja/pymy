@@ -1,0 +1,35 @@
+:root {
+  --maxw: 1120px;
+  --radius: 0px;
+
+  --header-h: 72px;
+
+  /* V heights */
+  --v-h: 86px;
+  --v-h-bottom: 170px;
+
+  /* Colors */
+  --navy: #0b2a4a;
+  --navy-2: #0a223b;
+  --ink: #0b1f33;
+  --muted: rgba(11, 31, 51, 0.7);
+
+  --accent: #d84b8b;
+  --accent-2: #ff6aa9;
+
+  --panel: #eef3fb;
+  --white: #ffffff;
+
+  --border: rgba(10, 34, 59, 0.14);
+  --shadow-soft: 0 14px 36px rgba(0, 0, 0, 0.16);
+  --focus: rgba(216, 75, 139, 0.35);
+
+  /* IMPORTANT: /public/files/ */
+  --bg-image: url('/files/home-bg.webp');
+  --bg-overlay: linear-gradient(
+    180deg,
+    rgba(6, 16, 28, 0.68) 0%,
+    rgba(6, 16, 28, 0.45) 45%,
+    rgba(6, 16, 28, 0.68) 100%
+  );
+}

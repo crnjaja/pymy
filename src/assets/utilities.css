@@ -1,0 +1,21 @@
+/* Reveal animation */
+.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

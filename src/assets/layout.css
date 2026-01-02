@@ -1,0 +1,112 @@
+.container {
+  width: min(var(--maxw), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.spacer {
+  height: 26px;
+}
+
+/* HOME / STAGES */
+.home {
+  padding-top: 0;
+}
+
+.stage {
+  position: relative;
+  background: transparent;
+}
+
+/* TOP HERO wrapper stage */
+.stage--top {
+  min-height: 72vh;
+  padding-top: calc(var(--header-h) + 64px);
+  padding-bottom: calc(64px + var(--v-h));
+  display: grid;
+  align-items: center;
+}
+
+/* Top LIGHT V */
+.stage--top::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: var(--v-h);
+  background: var(--panel);
+  clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.stage-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Opaque content block */
+.content-block {
+  background: var(--panel);
+  padding: 80px 0 110px;
+  position: relative;
+  z-index: 10;
+}
+.content-block > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Content starts lower */
+.hero-offset {
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .hero-offset {
+    margin-top: 0px;
+  }
+}
+
+/* BOTTOM IMAGE AREA */
+.stage--bottom {
+  position: relative;
+  background: transparent;
+  z-index: 1;
+
+  padding-top: calc(90px + var(--v-h-bottom));
+  padding-bottom: 140px;
+  min-height: 420px;
+
+  display: grid;
+  place-items: center;
+}
+
+.stage--bottom::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: var(--v-h-bottom);
+
+  background: var(--panel);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  pointer-events: none;
+  z-index: 0;
+
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.25);
+}
+
+.stage-inner--bottom {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+}
