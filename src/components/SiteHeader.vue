@@ -1,10 +1,12 @@
 <template>
   <header class="site-header" :class="{ 'site-header--solid': isSolid }">
     <div class="container header-inner">
+      <!-- BRAND -->
       <RouterLink to="/" class="brand brand--logo-only">
-        <img class="brand-logo" src="/files/logo.png" alt="Logo" />
+        <img src="/files/logo.png" alt="Logo" class="brand-logo" :class="{ 'is-hero': isAtTop }" />
       </RouterLink>
 
+      <!-- NAV -->
       <nav class="top-nav" aria-label="Navigation principale">
         <RouterLink class="top-nav-link" to="/">Home</RouterLink>
 
@@ -36,7 +38,7 @@
             </span>
           </button>
 
-          <div class="nav-dropdown-panel" role="menu" aria-label="About submenu" @click.stop>
+          <div class="nav-dropdown-panel" role="menu" aria-label="About submenu">
             <RouterLink
               class="nav-dropdown-item"
               to="/projects/hel"
@@ -89,7 +91,7 @@
             </span>
           </button>
 
-          <div class="nav-dropdown-panel" role="menu" aria-label="Projects submenu" @click.stop>
+          <div class="nav-dropdown-panel" role="menu" aria-label="Projects submenu">
             <RouterLink
               class="nav-dropdown-item"
               to="/projects/hrjust"
@@ -120,7 +122,7 @@
               @click="closeProjects"
             >
               CLI-M-CO2
-              <span class="nav-dropdown-hint">Climate… (à préciser)</span>
+              <span class="nav-dropdown-hint">Climate…</span>
             </RouterLink>
           </div>
         </div>
@@ -134,37 +136,38 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-const isSolid = ref(false)
 const route = useRoute()
 
+/* HEADER STATE */
+const isSolid = ref(false)
+const isAtTop = ref(true)
+
 const onScroll = () => {
-  isSolid.value = window.scrollY > 16
+  const y = window.scrollY || 0
+  isSolid.value = y > 16
+  isAtTop.value = y <= 2
 }
 
-/** Dropdown refs (for outside click + focus) */
+/* DROPDOWN REFS */
 const aboutEl = ref<HTMLElement | null>(null)
 const projectsEl = ref<HTMLElement | null>(null)
 
-/** Dropdown state (SEPARATE) */
+/* DROPDOWN STATE */
 const aboutOpen = ref(false)
 const projectsOpen = ref(false)
 
-/**
- * Pages that should highlight "About" even if they live under /projects/...
- * (because your About dropdown links go to these routes)
- */
-const ABOUT_ALIASES = new Set(['/le-bon', '/projects/hel', '/projects/team'])
+/* ROUTE ALIASES */
+const ABOUT_ALIASES = new Set(['/projects/hel', '/projects/team'])
 
-/** Active states (SEPARATE + fixed) */
 const isAboutActive = computed(() => ABOUT_ALIASES.has(route.path))
 const isProjectsActive = computed(() => {
   return route.path.startsWith('/projects/') && !ABOUT_ALIASES.has(route.path)
 })
 
-/** Desktop hover only */
+/* HOVER SUPPORT */
 const canHover = () => globalThis.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches
 
 function closeAll() {
@@ -172,7 +175,7 @@ function closeAll() {
   projectsOpen.value = false
 }
 
-/** About controls */
+/* ABOUT */
 function openAbout() {
   projectsOpen.value = false
   aboutOpen.value = true
@@ -185,7 +188,7 @@ function toggleAbout() {
   aboutOpen.value = !aboutOpen.value
 }
 
-/** Projects controls */
+/* PROJECTS */
 function openProjects() {
   aboutOpen.value = false
   projectsOpen.value = true
@@ -198,7 +201,7 @@ function toggleProjects() {
   projectsOpen.value = !projectsOpen.value
 }
 
-/** Hover handlers */
+/* HOVER HANDLERS */
 function onAboutEnter() {
   if (canHover()) openAbout()
 }
@@ -212,7 +215,7 @@ function onProjectsLeave() {
   if (canHover()) closeProjects()
 }
 
-/** Focus management */
+/* FOCUS */
 function focusFirstItem(which: 'about' | 'projects') {
   requestAnimationFrame(() => {
     const root = which === 'about' ? aboutEl.value : projectsEl.value
@@ -223,10 +226,9 @@ function focusFirstItem(which: 'about' | 'projects') {
   })
 }
 
-/** Close on outside click / escape */
+/* OUTSIDE CLICK / ESC */
 function onDocClick(e: MouseEvent) {
   const t = e.target as Node
-
   if (aboutOpen.value && aboutEl.value && !aboutEl.value.contains(t)) closeAbout()
   if (projectsOpen.value && projectsEl.value && !projectsEl.value.contains(t)) closeProjects()
 }
@@ -235,7 +237,6 @@ function onDocKeydown(e: KeyboardEvent) {
   if (e.key === 'Escape') closeAll()
 }
 
-/** Close on route change */
 watch(
   () => route.fullPath,
   () => closeAll(),
