@@ -2,7 +2,12 @@
   <header class="site-header" :class="{ 'site-header--solid': isSolid }">
     <div class="container header-inner">
       <RouterLink to="/" class="brand brand--logo-only">
-        <img class="brand-logo" src="/files/logo.png" alt="Logo" />
+        <img
+          class="brand-logo"
+          :class="{ 'brand-logo--top': !isSolid }"
+          src="/files/logo.png"
+          alt="Logo"
+        />
       </RouterLink>
 
       <nav class="top-nav" aria-label="Navigation principale">
@@ -134,7 +139,6 @@
     </div>
   </header>
 </template>
-
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
@@ -146,27 +150,19 @@ const onScroll = () => {
   isSolid.value = window.scrollY > 16
 }
 
-/** Dropdown refs (for outside click + focus) */
 const aboutEl = ref<HTMLElement | null>(null)
 const projectsEl = ref<HTMLElement | null>(null)
 
-/** Dropdown state (SEPARATE) */
 const aboutOpen = ref(false)
 const projectsOpen = ref(false)
 
-/**
- * Pages that should highlight "About" even if they live under /projects/...
- * (because your About dropdown links go to these routes)
- */
 const ABOUT_ALIASES = new Set(['/le-bon', '/projects/hel', '/projects/team'])
 
-/** Active states (SEPARATE + fixed) */
 const isAboutActive = computed(() => ABOUT_ALIASES.has(route.path))
-const isProjectsActive = computed(() => {
-  return route.path.startsWith('/projects/') && !ABOUT_ALIASES.has(route.path)
-})
+const isProjectsActive = computed(
+  () => route.path.startsWith('/projects/') && !ABOUT_ALIASES.has(route.path),
+)
 
-/** Desktop hover only */
 const canHover = () => globalThis.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches
 
 function closeAll() {
@@ -174,7 +170,6 @@ function closeAll() {
   projectsOpen.value = false
 }
 
-/** About controls */
 function openAbout() {
   projectsOpen.value = false
   aboutOpen.value = true
@@ -187,7 +182,6 @@ function toggleAbout() {
   aboutOpen.value = !aboutOpen.value
 }
 
-/** Projects controls */
 function openProjects() {
   aboutOpen.value = false
   projectsOpen.value = true
@@ -200,7 +194,6 @@ function toggleProjects() {
   projectsOpen.value = !projectsOpen.value
 }
 
-/** Hover handlers */
 function onAboutEnter() {
   if (canHover()) openAbout()
 }
@@ -214,7 +207,6 @@ function onProjectsLeave() {
   if (canHover()) closeProjects()
 }
 
-/** Focus management */
 function focusFirstItem(which: 'about' | 'projects') {
   requestAnimationFrame(() => {
     const root = which === 'about' ? aboutEl.value : projectsEl.value
@@ -225,10 +217,8 @@ function focusFirstItem(which: 'about' | 'projects') {
   })
 }
 
-/** Close on outside click / escape */
 function onDocClick(e: MouseEvent) {
   const t = e.target as Node
-
   if (aboutOpen.value && aboutEl.value && !aboutEl.value.contains(t)) closeAbout()
   if (projectsOpen.value && projectsEl.value && !projectsEl.value.contains(t)) closeProjects()
 }
@@ -237,11 +227,7 @@ function onDocKeydown(e: KeyboardEvent) {
   if (e.key === 'Escape') closeAll()
 }
 
-/** Close on route change */
-watch(
-  () => route.fullPath,
-  () => closeAll(),
-)
+watch(() => route.fullPath, closeAll)
 
 onMounted(() => {
   onScroll()
