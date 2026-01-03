@@ -69,7 +69,7 @@
           <h1 class="hero-title hero-title--words" ref="heroTitleEl">
             WHEN <span class="accent">CLIMATE CHANGE</span> ERODES
             <!-- Looping erosion effect only on HUMAN RIGHTS -->
-            <span class="accent erode-loop">HUMAN RIGHTS</span>
+            <span class="erode-loop">HUMAN RIGHTS</span>
           </h1>
 
           <p class="hero-subtitle">
