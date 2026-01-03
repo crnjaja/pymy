@@ -55,7 +55,7 @@
                   :disabled="!hasActiveFilters"
                   title="Clear filters"
                 >
-                  Direct link
+                  Clear filters
                 </button>
               </div>
             </div>
@@ -216,7 +216,7 @@
                     target="_blank"
                     rel="noopener"
                   >
-                    <span class="action-label">Read online</span>
+                    <span class="action-label">Direct link</span>
                     <svg
                       class="action-icon"
                       xmlns="http://www.w3.org/2000/svg"
