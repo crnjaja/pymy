@@ -62,7 +62,7 @@
         <div class="hero">
           <div class="hero-kicker">
             <span class="kicker-dot" aria-hidden="true"></span>
-            highlight
+            FOCUS
           </div>
 
           <!-- Keep your word reveal animation (useWordReveal) -->

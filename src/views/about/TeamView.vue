@@ -356,7 +356,7 @@ const coreTeam = [
   {
     key: 'riccarda-heepen',
     name: 'Riccarda Heepen',
-    role: 'Research Assistant',
+    role: 'Job Title',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non risus ac nulla luctus tincidunt. Maecenas at arcu non justo aliquam posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.',
     email: 'riccard.heepen@unibe.ch',
     linkedin: '#',
@@ -366,7 +366,7 @@ const coreTeam = [
   {
     key: 'martina-sardo',
     name: 'Martina Sardo',
-    role: 'Research Assistant',
+    role: 'Job Title',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non risus ac nulla luctus tincidunt. Maecenas at arcu non justo aliquam posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.',
     email: 'martina.sardo@unibe.ch',
     linkedin: '#',
@@ -376,7 +376,7 @@ const coreTeam = [
   {
     key: 'parinaz-tofighi',
     name: 'Parinaz Tofighi',
-    role: 'Research Assistant',
+    role: 'Job Title',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non risus ac nulla luctus tincidunt. Maecenas at arcu non justo aliquam posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.',
     email: 'parinaz.tofighi@unibe.ch',
     linkedin: '#',
