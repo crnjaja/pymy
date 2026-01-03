@@ -13,4 +13,7 @@
 @import './components/agenda.css' layer(components);
 @import './components/partners.css' layer(components);
 
+@import './pages/publications.css' layer(pages);
+@import './pages/events.css' layer(pages);
+
 @import './utilities.css' layer(utilities);
