@@ -44,7 +44,7 @@
 
 .logo-box img {
   width: 100%;
-  max-width: 320px; /* controls how large each logo can get */
+  max-width: 180px; /* controls how large each logo can get */
   max-height: 90px; /* make them clearly bigger */
   object-fit: contain;
 
