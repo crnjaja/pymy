@@ -216,7 +216,7 @@
                     target="_blank"
                     rel="noopener"
                   >
-                    <span class="action-label">Open publication</span>
+                    <span class="action-label">Read online</span>
                     <svg
                       class="action-icon"
                       xmlns="http://www.w3.org/2000/svg"
