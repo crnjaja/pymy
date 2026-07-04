@@ -83,6 +83,7 @@ export const advisoryBoard = [
     linkedin: '#',
     location: 'Max Planck Institute, Heidelberg, Germany',
     photo: '',
+    institutionLogo: '/images/logos/network/Planck.png',
   },
   {
     key: 'marco-armiero',
@@ -93,6 +94,7 @@ export const advisoryBoard = [
     linkedin: '#',
     location: 'University Santiago de Compostela, Spain',
     photo: '',
+    institutionLogo: '/images/logos/network/Compostelle.webp',
   },
   {
     key: 'bruce-burson',
@@ -103,6 +105,7 @@ export const advisoryBoard = [
     linkedin: '#',
     location: 'New Zealand Immigration and Protection Tribunal',
     photo: '',
+    institutionLogo: '/images/logos/network/NZ.png',
   },
   {
     key: 'asuncion-fresnoza-flot',
@@ -113,6 +116,7 @@ export const advisoryBoard = [
     linkedin: '#',
     location: 'Université Libre de Bruxelles, Brussels, Belgium',
     photo: '',
+    institutionLogo: '/images/logos/network/ULB.webp',
   },
   {
     key: 'federico-luisetti',
@@ -123,6 +127,7 @@ export const advisoryBoard = [
     linkedin: '#',
     location: 'University of St.Gallen, Switzerland',
     photo: '',
+    institutionLogo: '/images/logos/network/STG.png',
   },
   {
     key: 'maura-marchegiani',
@@ -133,6 +138,7 @@ export const advisoryBoard = [
     linkedin: '#',
     location: 'University of Foreigners Perugia, Italy',
     photo: '',
+    institutionLogo: '/images/logos/network/Perugia.webp',
   },
   {
     key: 'shannon-o-lear',
@@ -143,15 +149,17 @@ export const advisoryBoard = [
     linkedin: '#',
     location: 'University of Kansas, Lawrence, USA',
     photo: '',
+    institutionLogo: '/images/logos/network/KU.png',
   },
   {
     key: 'antonios-zanakopoulos',
-    name: "Antonios Tzanakopoulos",
+    name: 'Antonios Tzanakopoulos',
     role: 'Advisor',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non risus ac nulla luctus tincidunt. Maecenas at arcu non justo aliquam posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.',
     email: '',
     linkedin: '#',
-    location: 'University of Oxford, UK',
+    location: 'University of Oxford, United Kingdom',
     photo: '',
+    institutionLogo: '/images/logos/network/Oxford.webp',
   },
 ]

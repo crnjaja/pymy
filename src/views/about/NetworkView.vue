@@ -86,76 +86,144 @@
               </div>
             </div>
 
-            <ul class="advisor-grid" aria-label="Advisory board members">
-              <li v-for="member in advisoryBoard" :key="member.key" class="advisor-card">
-                <div class="advisor-header">
-                  <div class="avatar" :data-initials="initials(member.name)">
-                    <img
-                      v-if="member.photo"
-                      :src="member.photo"
-                      :alt="portraitAlt(member)"
-                      loading="lazy"
-                      decoding="async"
-                    />
+            <div class="advisor-showcase" aria-label="Advisory board profiles">
+              <aside class="advisor-bio-stage" aria-live="polite">
+                <div class="advisor-bio-card" :key="selectedAdvisor.key">
+                  <span class="advisor-bio-kicker">Advisor profile</span>
+
+                  <div class="advisor-bio-top">
+                    <div class="advisor-bio-avatar" :data-initials="initials(selectedAdvisor.name)">
+                      <img
+                        v-if="selectedAdvisor.photo"
+                        :src="selectedAdvisor.photo"
+                        :alt="portraitAlt(selectedAdvisor)"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+
+                    <div class="advisor-bio-heading">
+                      <h3 class="advisor-bio-name">{{ selectedAdvisor.name }}</h3>
+
+                      <div class="advisor-bio-actions" aria-label="Advisor contact links">
+                        <a
+                          class="advisor-bio-action"
+                          :class="{ 'is-disabled': !selectedAdvisor.email }"
+                          :href="selectedAdvisor.email ? mailto(selectedAdvisor.email) : undefined"
+                          :aria-label="
+                            selectedAdvisor.email
+                              ? emailAriaLabel(selectedAdvisor)
+                              : `${selectedAdvisor.name} has no email listed`
+                          "
+                          :aria-disabled="!selectedAdvisor.email"
+                          :title="selectedAdvisor.email || 'No email listed'"
+                          @click="guardMissingLink"
+                        >
+                          <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                              d="M4 6h16v12H4z"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="m4 7 8 6 8-6"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </a>
+
+                        <a
+                          class="advisor-bio-action"
+                          :class="{ 'is-disabled': !hasLinkedIn(selectedAdvisor) }"
+                          :href="
+                            hasLinkedIn(selectedAdvisor) ? selectedAdvisor.linkedin : undefined
+                          "
+                          :target="hasLinkedIn(selectedAdvisor) ? '_blank' : undefined"
+                          :rel="hasLinkedIn(selectedAdvisor) ? 'noopener' : undefined"
+                          :aria-label="
+                            hasLinkedIn(selectedAdvisor)
+                              ? linkedinAriaLabel(selectedAdvisor)
+                              : `${selectedAdvisor.name} has no LinkedIn listed`
+                          "
+                          :aria-disabled="!hasLinkedIn(selectedAdvisor)"
+                          :title="
+                            hasLinkedIn(selectedAdvisor) ? 'LinkedIn profile' : 'No LinkedIn listed'
+                          "
+                          @click="guardMissingLink"
+                        >
+                          <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                              d="M6.5 9.5V19M6.5 6.4v.1M10.5 19v-9.5M10.5 13.2c0-2.2 1.35-3.9 3.65-3.9 2.1 0 3.35 1.35 3.35 3.85V19"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="advisor-heading">
-                    <div class="name">{{ member.name }}</div>
-                    <div class="role">{{ member.role }}</div>
+                  <p class="advisor-bio-text">{{ selectedAdvisor.bio }}</p>
+
+                  <div class="advisor-bio-institution">
+                    <span class="advisor-bio-logo-wrap">
+                      <img
+                        class="advisor-bio-logo"
+                        :src="advisorLogo(selectedAdvisor)"
+                        :alt="`${advisorInstitutionName(selectedAdvisor)} logo`"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                    <span class="advisor-bio-institution-copy">
+                      <span class="advisor-bio-institution-label">Institution</span>
+                      <span class="advisor-bio-institution-name">
+                        {{ advisorInstitutionName(selectedAdvisor) }}
+                      </span>
+                      <span
+                        v-if="advisorInstitutionPlace(selectedAdvisor)"
+                        class="advisor-bio-institution-place"
+                      >
+                        {{ advisorInstitutionPlace(selectedAdvisor) }}
+                      </span>
+                    </span>
                   </div>
                 </div>
+              </aside>
 
-                <div class="member-divider" aria-hidden="true"></div>
-
-                <p class="bio">
-                  {{ member.bio }}
-                </p>
-
-                <div class="meta" aria-label="Advisor contact details">
-                  <div v-if="member.email" class="meta-row">
-                    <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 5h16v14H4z" stroke-width="1.6" />
-                      <path d="M4 7l8 6 8-6" stroke-width="1.6" />
-                    </svg>
-                    <a
-                      class="link"
-                      :href="mailto(member.email)"
-                      :aria-label="emailAriaLabel(member)"
-                    >
-                      {{ member.email }}
-                    </a>
-                  </div>
-
-                  <div v-if="member.linkedin && member.linkedin !== '#'" class="meta-row">
-                    <svg class="fill-primary" viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.2 2.3-2.47 4.73-2.47C22.4 7.73 24 10 24 14.06V24h-5v-8.5c0-2.03-.04-4.65-2.83-4.65-2.83 0-3.27 2.21-3.27 4.49V24H8z"
+              <ul class="advisor-profile-grid" aria-label="Advisory board members">
+                <li v-for="member in advisoryBoard" :key="member.key" class="advisor-profile-item">
+                  <button
+                    class="advisor-profile-button"
+                    type="button"
+                    :class="{ 'is-active': selectedAdvisor.key === member.key }"
+                    :aria-pressed="selectedAdvisor.key === member.key"
+                    @click="selectAdvisor(member)"
+                  >
+                    <span class="advisor-avatar" :data-initials="initials(member.name)">
+                      <img
+                        v-if="member.photo"
+                        :src="member.photo"
+                        :alt="portraitAlt(member)"
+                        loading="lazy"
+                        decoding="async"
                       />
-                    </svg>
-                    <a
-                      class="link"
-                      :href="member.linkedin"
-                      target="_blank"
-                      rel="noopener"
-                      :aria-label="linkedinAriaLabel(member)"
-                    >
-                      LinkedIn
-                    </a>
-                  </div>
+                    </span>
 
-                  <div v-if="member.location" class="meta-row">
-                    <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"
-                        stroke-width="1.6"
-                      />
-                      <circle cx="12" cy="9" r="2.5" stroke-width="1.6" />
-                    </svg>
-                    <span class="meta-text">{{ member.location }}</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
+                    <span class="advisor-name" :title="member.name">{{ member.name }}</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </section>
         </div>
       </div>
@@ -164,7 +232,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useWordReveal } from '@/composables/useWordReveal'
 import { advisoryBoard as advisoryBoardData } from '@/data/team.data'
@@ -207,7 +275,56 @@ const partners = [
   },
 ]
 
-const advisoryBoard = computed(() => TeamService.normalizeMembers(advisoryBoardData))
+const advisoryBoard = computed(() =>
+  TeamService.normalizeMembers(advisoryBoardData).map((member, index) => ({
+    ...member,
+    institutionLogo: advisoryBoardData[index]?.institutionLogo,
+  })),
+)
+const selectedAdvisorKey = ref(advisoryBoard.value[0]?.key || '')
+const selectedAdvisor = computed(
+  () =>
+    advisoryBoard.value.find((member) => member.key === selectedAdvisorKey.value) ||
+    advisoryBoard.value[0] ||
+    {},
+)
+
+const selectAdvisor = (member) => {
+  selectedAdvisorKey.value = member.key
+}
+
+const DEFAULT_ADVISOR_LOGO = '/images/logos/unibe.png'
+
+const advisorInstitution = (member) =>
+  member.university ||
+  member.institution ||
+  member.affiliation ||
+  member.location ||
+  'University of Bern'
+
+const advisorInstitutionParts = (member) => {
+  const value = advisorInstitution(member)
+  const [name, ...placeParts] = value
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean)
+
+  return {
+    name: name || value,
+    place: placeParts.join(', '),
+  }
+}
+
+const advisorInstitutionName = (member) => advisorInstitutionParts(member).name
+const advisorInstitutionPlace = (member) => advisorInstitutionParts(member).place
+
+const advisorLogo = (member) =>
+  member.institutionLogo || member.universityLogo || DEFAULT_ADVISOR_LOGO
+
+const hasLinkedIn = (member) => Boolean(member.linkedin && member.linkedin !== '#')
+const guardMissingLink = (event) => {
+  if (!event.currentTarget.getAttribute('href')) event.preventDefault()
+}
 
 const initials = TeamService.initials
 const mailto = TeamService.mailto
