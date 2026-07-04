@@ -78,12 +78,6 @@
   transform: translateZ(0);
 }
 
-.project-statement-card {
-  background:
-    radial-gradient(circle at 88% 8%, rgba(255, 255, 255, 0.2), transparent 30%),
-    linear-gradient(142deg, #02989e 0%, #0b635b 100%);
-}
-
 .fact-card:nth-child(1),
 .case-card:nth-child(1),
 .work-package-card:nth-child(1),
@@ -140,6 +134,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  transition:
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255, 255, 255, 0.2), transparent 30%),
+    linear-gradient(142deg, #02989e 0%, #0b635b 100%);
 }
 
 .project-statement-card::before {
@@ -210,6 +211,10 @@
   min-height: 132px;
   display: grid;
   align-content: end;
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease;
+  will-change: transform;
 }
 
 .fact-card::before {
@@ -836,23 +841,6 @@
   border-top: 1px solid rgba(255, 255, 255, 0.22);
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.13), transparent 42%);
-}
-
-.output-card::after {
-  left: 22px;
-  right: 22px;
-  top: clamp(74px, 8vw, 92px);
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.46),
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-}
-
-.output-card::after {
-  display: none;
 }
 
 .output-card:nth-child(2n)::before {

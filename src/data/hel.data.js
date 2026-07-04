@@ -11,9 +11,9 @@ export const PROJECT = {
 }
 
 export const facts = [
-  { label: 'SNSF Funding', value: "CHF 1'744'177" },
+  { label: 'Funding', value: 'SNSF Consolidator Grants' },
   { label: 'Duration', value: '01.07.2025 – 30.06.2030' },
-  { label: 'Team', value: '1 PI, 2 PostDoc, 1 Phd, 1 RA, 1 Dev' },
+  { label: 'Institute', value: 'UniBE Faculty of Law' },
   { label: 'Case studies', value: 'South Asia · Latin America · Pacific' },
 ]
 
@@ -44,8 +44,8 @@ export const caseStudies = [
   {
     key: 'latin-america',
     index: '02',
-    region: 'Latin America',
-    title: 'Latin America',
+    region: 'Latin Amer.',
+    title: 'Latin Amer.',
     description:
       'Studying climate mobility trajectories, legal responses and lived experiences of slow displacement.',
   },
@@ -63,18 +63,19 @@ export const workPackages = [
   {
     id: 'wp1',
     index: 'WP1',
-    title: 'Empirical Understanding',
-    subtitle: '',
-    description: 'Explore migrants experience of time + climate migration litigation.',
-    aims: 'Identify the co-existence of different temporalities + interaction with access to rights',
+    title: 'Work Package 1',
+    subtitle: 'Empirical Understanding',
+    description:
+      'Examining migrants’ lived experiences of time within climate migration litigation.',
+    aims: 'Identify how intersecting temporalities influence access to rights.',
   },
   {
     id: 'wp2',
     index: 'WP2',
-    title: 'Theorizing',
-    subtitle: 'Slow Violence and Climate Migration',
+    title: 'Work Package 2',
+    subtitle: 'Theorizing Slow Violence and Climate Migration',
     description: 'Confronting existing normative frameworks with insights from case studies.',
-    aims: 'Reframe international law to meet protection needs + distribution of duties',
+    aims: 'Reframe international law to better meet protection needs and allocate responsibilities.',
   },
 ]
 

@@ -67,24 +67,6 @@
               </div>
             </div>
 
-            <ul class="work-package-grid" aria-label="Work packages">
-              <li
-                v-for="workPackage in workPackages"
-                :key="workPackage.id"
-                class="work-package-card"
-              >
-                <span class="case-index">{{ workPackage.index }}</span>
-                <div>
-                  <h3>
-                    <span>{{ workPackage.title }}</span>
-                    <span class="work-package-subtitle">{{ workPackage.subtitle }}</span>
-                  </h3>
-                  <p>{{ workPackage.description }}</p>
-                  <p class="work-package-aims">Aims: {{ workPackage.aims }}</p>
-                </div>
-              </li>
-            </ul>
-
             <div class="timeline-shell" aria-label="Project timeline from year one to year five">
               <div class="timeline-years" aria-hidden="true">
                 <span v-for="year in years" :key="year">Year {{ year }}</span>
@@ -105,6 +87,20 @@
               </div>
             </div>
           </section>
+
+          <ul class="work-package-grid" aria-label="Work packages">
+            <li v-for="workPackage in workPackages" :key="workPackage.id" class="work-package-card">
+              <span class="case-index">{{ workPackage.index }}</span>
+              <div>
+                <h3>
+                  <span>{{ workPackage.title }}</span>
+                  <span class="work-package-subtitle">{{ workPackage.subtitle }}</span>
+                </h3>
+                <p>{{ workPackage.description }}</p>
+                <p class="work-package-aims">Aims: {{ workPackage.aims }}</p>
+              </div>
+            </li>
+          </ul>
 
           <div class="spacer" aria-hidden="true"></div>
           <div class="spacer" aria-hidden="true"></div>
@@ -222,6 +218,9 @@
               </article>
             </div>
           </section>
+          <div class="spacer" aria-hidden="true"></div>
+          <div class="spacer" aria-hidden="true"></div>
+          <div class="spacer" aria-hidden="true"></div>
         </div>
       </div>
     </section>
