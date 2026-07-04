@@ -205,7 +205,7 @@
               @click="closeProjects"
             >
               CLI-M-CO2
-              <span class="nav-dropdown-hint">Project description (tba)</span>
+              <span class="nav-dropdown-hint">Data to be imported</span>
             </RouterLink>
 
             <RouterLink
@@ -216,7 +216,7 @@
               @click="closeProjects"
             >
               CLISEL
-              <span class="nav-dropdown-hint">Project description (tba)</span>
+              <span class="nav-dropdown-hint">Data to be imported</span>
             </RouterLink>
           </div>
         </div>
