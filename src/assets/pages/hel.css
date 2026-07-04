@@ -702,6 +702,10 @@
   );
 }
 
+.output-card::after {
+  display: none;
+}
+
 .output-card:nth-child(2n)::before {
   border-top: 0;
   border-left: 1px solid rgba(255, 255, 255, 0.22);
