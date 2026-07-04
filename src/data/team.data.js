@@ -2,7 +2,7 @@ export const coreTeam = [
   {
     key: 'elisa-fornale',
     name: 'Elisa Fornalé',
-    role: 'Professor',
+    role: 'Senior Researcher',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non risus ac nulla luctus tincidunt. Maecenas at arcu non justo aliquam posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.',
     email: 'elisa.fornale@unibe.ch',
     linkedin: 'https://ch.linkedin.com/in/elisa-fornal%C3%A9-622596283',
