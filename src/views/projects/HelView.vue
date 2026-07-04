@@ -109,7 +109,7 @@
           <section class="project-section" aria-labelledby="map-title">
             <div class="section-topline">
               <div>
-                <h2 id="map-title" class="section-heading">World Map</h2>
+                <h2 id="map-title" class="section-heading">Case Studies</h2>
               </div>
             </div>
 
@@ -123,20 +123,15 @@
               </li>
             </ul>
 
-            <div class="word-map" aria-label="Animated abstract map of mobility routes">
-              <img class="world-map-layer" src="/world-map.svg" alt="" aria-hidden="true" />
+            <div class="word-map" aria-label="Detailed map of climate mobility routes">
+              <img
+                class="world-map-layer"
+                src="/world-map-detailed.svg"
+                alt=""
+                aria-hidden="true"
+              />
 
               <div class="map-glow" aria-hidden="true"></div>
-              <div
-                v-for="point in mapPoints"
-                :key="point.key"
-                class="map-point"
-                :class="point.type"
-                :style="pointStyle(point)"
-              >
-                <span class="map-dot" aria-hidden="true"></span>
-                <span class="map-label">{{ point.label }}</span>
-              </div>
 
               <svg
                 class="map-routes"
@@ -144,14 +139,61 @@
                 preserveAspectRatio="none"
                 aria-hidden="true"
               >
-                <path
+                <defs>
+                  <filter id="hel-route-glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="5" result="blur" />
+                    <feColorMatrix
+                      in="blur"
+                      type="matrix"
+                      values="0 0 0 0 0.02 0 0 0 0 0.42 0 0 0 0 0.44 0 0 0 .55 0"
+                      result="glow"
+                    />
+                    <feMerge>
+                      <feMergeNode in="glow" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <g
                   v-for="route in mapRoutes"
                   :key="route.key"
-                  class="route-line"
-                  :class="route.className"
-                  :d="route.path"
-                />
+                  class="route-group"
+                  :style="routeStyle(route)"
+                >
+                  <path
+                    class="route-line route-line--aura"
+                    :class="route.className"
+                    :d="route.path"
+                  />
+                  <path
+                    class="route-line route-line--rail"
+                    :class="route.className"
+                    :d="route.path"
+                  />
+                  <path
+                    class="route-line route-line--reveal"
+                    :class="route.className"
+                    :d="route.path"
+                  />
+                  <path
+                    class="route-line route-line--particles"
+                    :class="route.className"
+                    :d="route.path"
+                  />
+                </g>
               </svg>
+
+              <div
+                v-for="point in mapPoints"
+                :key="point.key"
+                class="map-point"
+                :class="[point.type, point.labelClass]"
+                :style="pointStyle(point)"
+              >
+                <span class="map-dot" aria-hidden="true"></span>
+                <span class="map-label">{{ point.label }}</span>
+              </div>
             </div>
           </section>
 
@@ -191,7 +233,7 @@ const { el: heroTitleEl } = useWordReveal({
   duration: 1300,
 })
 
-const years = [1, 2, 3, 4, 5]
+const years = HelService.years()
 const facts = HelService.facts
 const caseStudies = HelService.caseStudies
 const workPackages = HelService.workPackages
@@ -210,5 +252,9 @@ function timelineStyle(item) {
 
 function pointStyle(point) {
   return HelService.pointStyle(point)
+}
+
+function routeStyle(route) {
+  return HelService.routeStyle(route)
 }
 </script>
