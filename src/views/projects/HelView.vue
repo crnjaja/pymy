@@ -58,32 +58,30 @@
 
           <div class="spacer" aria-hidden="true"></div>
 
-          <section class="project-section" aria-labelledby="cases-title">
-            <div class="section-topline">
-              <div>
-                <h2 id="cases-title" class="section-heading">Case Studies</h2>
-              </div>
-            </div>
-
-            <ul class="case-grid" aria-label="Regional case studies">
-              <li v-for="study in caseStudies" :key="study.key" class="case-card">
-                <span class="case-index">{{ study.index }}</span>
-                <div>
-                  <h3>{{ study.region }}</h3>
-                  <p>{{ study.description }}</p>
-                </div>
-              </li>
-            </ul>
-          </section>
-
-          <div class="spacer" aria-hidden="true"></div>
-
           <section class="project-section" aria-labelledby="timeline-title">
             <div class="section-topline">
               <div>
                 <h2 id="timeline-title" class="section-heading">Timeline</h2>
               </div>
             </div>
+
+            <ul class="work-package-grid" aria-label="Work packages">
+              <li
+                v-for="workPackage in workPackages"
+                :key="workPackage.id"
+                class="work-package-card"
+              >
+                <span class="case-index">{{ workPackage.index }}</span>
+                <div>
+                  <h3>
+                    <span>{{ workPackage.title }}</span>
+                    <span class="work-package-subtitle">{{ workPackage.subtitle }}</span>
+                  </h3>
+                  <p>{{ workPackage.description }}</p>
+                  <p class="work-package-aims">Aims: {{ workPackage.aims }}</p>
+                </div>
+              </li>
+            </ul>
 
             <div class="timeline-shell" aria-label="Project timeline from year one to year five">
               <div class="timeline-years" aria-hidden="true">
@@ -114,6 +112,16 @@
                 <h2 id="map-title" class="section-heading">World Map</h2>
               </div>
             </div>
+
+            <ul class="case-grid" aria-label="Regional case studies">
+              <li v-for="study in caseStudies" :key="study.key" class="case-card">
+                <span class="case-index">{{ study.index }}</span>
+                <div>
+                  <h3>{{ study.region }}</h3>
+                  <p>{{ study.description }}</p>
+                </div>
+              </li>
+            </ul>
 
             <div class="word-map" aria-label="Animated abstract map of mobility routes">
               <img class="world-map-layer" src="/world-map.svg" alt="" aria-hidden="true" />
@@ -186,6 +194,7 @@ const { el: heroTitleEl } = useWordReveal({
 const years = [1, 2, 3, 4, 5]
 const facts = HelService.facts
 const caseStudies = HelService.caseStudies
+const workPackages = HelService.workPackages
 const timeline = HelService.timeline
 const mapPoints = HelService.mapPoints
 const mapRoutes = HelService.mapRoutes

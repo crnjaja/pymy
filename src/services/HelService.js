@@ -12,9 +12,9 @@ export class HelService {
   }
 
   static facts = [
-    { label: 'Funding', value: "CHF 1'744'177" },
-    { label: 'Dates', value: '01.07.2025 – 30.06.2030' },
-    { label: 'Duration', value: '5 years' },
+    { label: 'SNSF Funding', value: "CHF 1'744'177" },
+    { label: 'Duration', value: '01.07.2025 – 30.06.2030' },
+    { label: 'Team', value: '1 PI, 2 PostDoc, 1 Phd, 1 RA, 1 Dev' },
     { label: 'Case studies', value: 'South Asia · Latin America · Pacific' },
   ]
 
@@ -63,19 +63,19 @@ export class HelService {
   static workPackages = [
     {
       id: 'wp1',
-      title: 'WP1 — Empirical Understanding',
-      description: 'Exploring migrants’ experiences of time and climate migration litigation.',
-      aims: [
-        'Identify multiple temporalities',
-        'Study interaction with access to rights',
-        'Produce empirical datasets',
-      ],
+      index: 'WP1',
+      title: 'Empirical Understanding',
+      subtitle: '',
+      description: 'Explore migrants experience of time + climate migration litigation.',
+      aims: 'Identify the co-existence of different temporalities + interaction with access to rights',
     },
     {
       id: 'wp2',
-      title: 'WP2 — Theorizing',
-      description: 'Reframing international law through insights emerging from empirical work.',
-      aims: ['Climate migration governance', 'Writing Time', 'International cooperation'],
+      index: 'WP2',
+      title: 'Theorizing',
+      subtitle: 'Slow Violence and Climate Migration',
+      description: 'Confronting existing normative frameworks with insights from case studies.',
+      aims: 'Reframe international law to meet protection needs + distribution of duties',
     },
   ]
 

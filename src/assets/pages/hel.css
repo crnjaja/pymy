@@ -67,6 +67,7 @@
 .project-statement-card,
 .fact-card,
 .case-card,
+.work-package-card,
 .output-card {
   position: relative;
   overflow: hidden;
@@ -85,6 +86,7 @@
 
 .fact-card:nth-child(1),
 .case-card:nth-child(1),
+.work-package-card:nth-child(1),
 .output-card:nth-child(1) {
   background:
     radial-gradient(circle at 86% 12%, rgba(255, 255, 255, 0.2), transparent 28%),
@@ -93,6 +95,7 @@
 
 .fact-card:nth-child(2),
 .case-card:nth-child(2),
+.work-package-card:nth-child(2),
 .output-card:nth-child(2) {
   background:
     radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.18), transparent 30%),
@@ -117,10 +120,12 @@
 .project-statement-card::before,
 .fact-card::before,
 .case-card::before,
+.work-package-card::before,
 .output-card::before,
 .project-statement-card::after,
 .fact-card::after,
 .case-card::after,
+.work-package-card::after,
 .output-card::after {
   content: '';
   position: absolute;
@@ -167,6 +172,7 @@
 
 .project-statement-card h3,
 .case-card h3,
+.work-package-card h3,
 .output-card h3 {
   position: relative;
   z-index: 1;
@@ -179,7 +185,8 @@
 }
 
 .project-statement-card p,
-.case-card p {
+.case-card p,
+.work-package-card p {
   position: relative;
   z-index: 1;
   max-width: 68ch;
@@ -253,6 +260,7 @@
 }
 
 .case-grid,
+.work-package-grid,
 .output-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -264,7 +272,8 @@
 }
 
 /* Case cards: thick frame + floating glass number */
-.case-card {
+.case-card,
+.work-package-card {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 18px;
@@ -275,13 +284,15 @@
     box-shadow 0.24s ease;
 }
 
-.case-card::before {
+.case-card::before,
+.work-package-card::before {
   inset: 14px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), transparent 38%);
 }
 
-.case-card::after {
+.case-card::after,
+.work-package-card::after {
   left: 14px;
   top: 14px;
   width: 74px;
@@ -290,7 +301,8 @@
   border-top: 2px solid rgba(255, 255, 255, 0.36);
 }
 
-.case-card:nth-child(2)::after {
+.case-card:nth-child(2)::after,
+.work-package-card:nth-child(2)::after {
   left: auto;
   right: 14px;
   border-left: 0;
@@ -305,6 +317,7 @@
 }
 
 .case-card:hover,
+.work-package-card:hover,
 .output-card:hover,
 .fact-card:hover,
 .project-statement-card:hover,
@@ -326,6 +339,34 @@
   border: 1px solid rgba(255, 255, 255, 0.24);
   backdrop-filter: blur(14px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.work-package-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: clamp(22px, 2.8vw, 32px);
+}
+
+.work-package-card {
+  list-style: none;
+}
+
+.work-package-card h3 span {
+  display: block;
+}
+
+.work-package-card .work-package-subtitle {
+  margin-top: 6px;
+  font-size: clamp(18px, 2vw, 28px);
+  line-height: 1.05;
+}
+
+.work-package-card .work-package-aims {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.55;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* Timeline: premium editorial card, aligned with the colored card system */
@@ -725,6 +766,7 @@
   .project-page .section-topline,
   .project-feature-grid,
   .case-grid,
+  .work-package-grid,
   .output-grid {
     grid-template-columns: 1fr;
   }
@@ -777,6 +819,7 @@
 @media (max-width: 640px) {
   .project-statement-card,
   .case-card,
+  .work-package-card,
   .output-card {
     padding: 22px;
   }
@@ -785,12 +828,14 @@
     padding: 20px;
   }
 
-  .case-card {
+  .case-card,
+  .work-package-card {
     grid-template-columns: 1fr;
   }
 
   .project-statement-card::before,
   .case-card::before,
+  .work-package-card::before,
   .output-card::before {
     inset: 10px;
   }
@@ -817,6 +862,7 @@
   .project-statement-card,
   .fact-card,
   .case-card,
+  .work-package-card,
   .output-card,
   .timeline-item {
     transition: none !important;
@@ -825,6 +871,7 @@
   .project-statement-card:hover,
   .fact-card:hover,
   .case-card:hover,
+  .work-package-card:hover,
   .output-card:hover,
   .timeline-item:hover {
     transform: none !important;
