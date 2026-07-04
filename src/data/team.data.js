@@ -144,7 +144,7 @@ export const advisoryBoard = [
     key: 'shannon-o-lear',
     name: "Shannon O'Lear",
     role: 'Advisor',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non risus ac nulla luctus tincidunt. Maecenas at arcu non justo aliquam posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.',
+    bio: 'Shannon O’Lear is a Professor of Geography at the University of Kansas. She is a political geographer with interests in environmental geopolitics, critical geopolitics, the South Caucasus and Caspian Sea region, and science & slow violence. She has published work on climate science, geography & Science and Technology Studies (STS); geopolitics in Azerbaijan and Armenia; environmental issues in the Caspian Sea region; and genocide.',
     email: '',
     linkedin: '#',
     location: 'University of Kansas, Lawrence, USA',
