@@ -57,6 +57,8 @@
           </section>
 
           <div class="spacer" aria-hidden="true"></div>
+          <div class="spacer" aria-hidden="true"></div>
+          <div class="spacer" aria-hidden="true"></div>
 
           <section class="project-section" aria-labelledby="timeline-title">
             <div class="section-topline">
@@ -104,6 +106,8 @@
             </div>
           </section>
 
+          <div class="spacer" aria-hidden="true"></div>
+          <div class="spacer" aria-hidden="true"></div>
           <div class="spacer" aria-hidden="true"></div>
 
           <section class="project-section" aria-labelledby="map-title">
@@ -197,6 +201,8 @@
             </div>
           </section>
 
+          <div class="spacer" aria-hidden="true"></div>
+          <div class="spacer" aria-hidden="true"></div>
           <div class="spacer" aria-hidden="true"></div>
 
           <section class="project-section" aria-labelledby="outputs-title">
