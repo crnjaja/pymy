@@ -35,9 +35,9 @@ export const events = [
     image: '/files/events/Leiden.jpg',
     imageAlt: 'CINETS 2026: Crimmigration in an Age of Authoritarian Drift',
     speakers: ['Elisa Fornalé, Simone Ferrari'],
-    summary: `Elisa Fornalé and Simone Ferrari will participate in CINETS 2026 – Crimmigration in an Age of Authoritarian Drift, an international conference bringing together leading scholars, practitioners, and researchers to discuss the intersection of migration, criminal law, borders, and human rights. The conference will take place in Leiden, the Netherlands, and will focus on the growing challenges posed by authoritarian approaches to migration governance.
+    summary: `Elisa Fornalé and Simone Ferrari participated in CINETS 2026 – Crimmigration in an Age of Authoritarian Drift, an international conference that brought together leading scholars, practitioners, and researchers to discuss the intersection of migration, criminal law, borders, and human rights. The conference took place in Leiden, the Netherlands, and focused on the growing challenges posed by authoritarian approaches to migration governance.
 
-    During the conference, Elisa Fornalé will present her paper, “Temporal (In)Humanity: Slow Violence and Migrants Families Detention” and Dr. Simone Ferrari will present his paper, “Borders of Death: Family Separation and Return Memories in the Darién Gap” as part of Panel 23 – Slow Death in Contemporary Migration Regimes. Their presentations will examine the impact of prolonged detention on migrant families, family separation, and return memories in contemporary migration contexts, contributing to discussions on the human consequences of migration control policies alongside other international experts in the field.`,
+    During the conference, Elisa Fornalé presented her paper, “Temporal (In)Humanity: Slow Violence and Migrants Families Detention,” while Dr. Simone Ferrari presented his paper, “Borders of Death: Family Separation and Return Memories in the Darién Gap,” as part of Panel 23 – Slow Death in Contemporary Migration Regimes. Their presentations examined the impact of prolonged detention on migrant families, family separation, and return memories in contemporary migration contexts, contributing to discussions on the human consequences of migration control policies alongside other international experts in the field.`,
     links: {
       program: '/files/events/CINETS.pdf',
       flyer: '',
@@ -215,8 +215,7 @@ Drawing on themes closely connected to the theoretical framework of Resisting Hu
   },
   {
     id: 'roundtable-on-gender-related-vulnerabilities',
-    title:
-      'Colombian Border Narratives discussed at the AISI 2026 Congress',
+    title: 'Colombian Border Narratives discussed at the AISI 2026 Congress',
     start: '2026-06-25',
     end: '2026-06-27',
     location: 'University of Turin, Italy',

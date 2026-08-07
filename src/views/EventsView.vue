@@ -65,7 +65,7 @@
               <input
                 v-model="q"
                 type="search"
-                placeholder="Search title, representative, location, keywords…"
+                placeholder="Search title, location, keywords…"
                 autocomplete="off"
                 @keydown.esc.prevent="q = ''"
               />
