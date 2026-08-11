@@ -65,7 +65,7 @@
               <input
                 v-model="q"
                 type="search"
-                placeholder="Search title, representative, location, keywords…"
+                placeholder="Search title, location, keywords…"
                 autocomplete="off"
                 @keydown.esc.prevent="q = ''"
               />
@@ -486,7 +486,10 @@ function observeCards() {
 
       revealedKeys.value = next
     },
-    { threshold: 0.12 },
+    {
+      threshold: 0.01,
+      rootMargin: '200px 0px 200px 0px',
+    },
   )
 
   els.forEach((el) => io.observe(el))

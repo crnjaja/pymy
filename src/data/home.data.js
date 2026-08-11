@@ -1,8 +1,8 @@
 export const latestItems = [
   {
     label: 'Last News',
-    title: 'UNCITRAL Transdanubian Days 2026',
-    text: `On 11 June, the HRJust project and its Climate Claims Visual Tool will be presented during an expert meeting dedicated to climate litigation, investor-State dispute settlement, and ongoing UNCITRAL reform discussions. The event will bring together researchers and practitioners to explore emerging legal trends, empirical insights, and institutional responses to climate-related investment disputes.`,
+    title: 'CINETS 2026',
+    text: `At CINETS 2026 – Crimmigration in an Age of Authoritarian Drift, Elisa Fornalé and Simone Ferrari presented their latest research during an international conference dedicated to migration, criminal law, borders, and human rights. Their contributions explored migrant family detention, family separation, and return memories in contemporary migration contexts.`,
     published: '26 May 2026',
     image: '/images/backgrounds/background4.jpg',
     imageAlt: 'News cover',

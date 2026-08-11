@@ -9,7 +9,7 @@ export class TeamService {
     return (first + last).toUpperCase()
   }
 
-  static normalizeMember(member) {
+  static normalizeMember(member = {}) {
     return {
       key: member.key || TeamService.slugify(member.name),
       name: member.name || '',
@@ -19,6 +19,12 @@ export class TeamService {
       linkedin: member.linkedin || '',
       location: member.location || '',
       photo: member.photo || '',
+      locationLogo: member.locationLogo || '',
+      institutionLogo: member.institutionLogo || member.universityLogo || '',
+      universityLogo: member.universityLogo || member.institutionLogo || '',
+      institution: member.institution || '',
+      university: member.university || '',
+      affiliation: member.affiliation || '',
     }
   }
 
@@ -30,7 +36,7 @@ export class TeamService {
     return String(value)
       .toLowerCase()
       .normalize('NFD')
-      .replace(/[̀-ͯ]/g, '')
+      .replace(/[\u0300-\u036f]/g, '')
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '')
   }

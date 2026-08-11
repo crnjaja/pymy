@@ -27,167 +27,166 @@
     <section class="content-block full-bleed">
       <div class="container">
         <div class="hero-offset team-hero-offset">
-          <section
-            class="team-section"
-            aria-labelledby="core-team-title"
-            aria-describedby="core-team-desc"
-          >
-            <h2 class="section-heading">Core Team</h2>
+          <section class="team-section" aria-labelledby="core-team-title">
+            <div class="section-topline">
+              <div>
+                <h2 id="core-team-title" class="section-heading">Core Team</h2>
+              </div>
+            </div>
 
-            <ul class="team-grid" aria-label="Core team members">
-              <li v-for="member in coreTeam" :key="member.key" class="member-card">
-                <div class="member-header">
-                  <div class="avatar" :data-initials="initials(member.name)">
-                    <img
-                      v-if="member.photo"
-                      :src="member.photo"
-                      :alt="portraitAlt(member)"
-                      loading="lazy"
-                      decoding="async"
-                    />
+            <div class="team-showcase" aria-label="Core team profiles">
+              <aside class="team-bio-stage" aria-live="polite">
+                <div class="team-bio-card" :key="selectedCoreMember.key">
+                  <span class="team-bio-kicker">Team member profile</span>
+
+                  <div class="team-bio-top">
+                    <div class="team-bio-avatar" :data-initials="initials(selectedCoreMember.name)">
+                      <img
+                        v-if="selectedCoreMember.photo"
+                        :src="selectedCoreMember.photo"
+                        :alt="portraitAlt(selectedCoreMember)"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+
+                    <div class="team-bio-heading">
+                      <h3 class="team-bio-name">{{ selectedCoreMember.name }}</h3>
+                      <div class="team-bio-actions" aria-label="Team member contact links">
+                        <a
+                          class="team-bio-action"
+                          :class="{ 'is-disabled': !selectedCoreMember.email }"
+                          :href="
+                            selectedCoreMember.email ? mailto(selectedCoreMember.email) : undefined
+                          "
+                          :aria-label="
+                            selectedCoreMember.email
+                              ? emailAriaLabel(selectedCoreMember)
+                              : `${selectedCoreMember.name} has no email listed`
+                          "
+                          :aria-disabled="!selectedCoreMember.email"
+                          :title="selectedCoreMember.email || 'No email listed'"
+                          @click="guardMissingLink"
+                        >
+                          <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                              d="M4 6h16v12H4z"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="m4 7 8 6 8-6"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </a>
+
+                        <a
+                          class="team-bio-action"
+                          :class="{ 'is-disabled': !hasLinkedIn(selectedCoreMember) }"
+                          :href="
+                            hasLinkedIn(selectedCoreMember)
+                              ? selectedCoreMember.linkedin
+                              : undefined
+                          "
+                          :target="hasLinkedIn(selectedCoreMember) ? '_blank' : undefined"
+                          :rel="hasLinkedIn(selectedCoreMember) ? 'noopener' : undefined"
+                          :aria-label="
+                            hasLinkedIn(selectedCoreMember)
+                              ? linkedinAriaLabel(selectedCoreMember)
+                              : `${selectedCoreMember.name} has no LinkedIn listed`
+                          "
+                          :aria-disabled="!hasLinkedIn(selectedCoreMember)"
+                          :title="
+                            hasLinkedIn(selectedCoreMember)
+                              ? 'LinkedIn profile'
+                              : 'No LinkedIn listed'
+                          "
+                          @click="guardMissingLink"
+                        >
+                          <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                              d="M6.5 9.5V19M6.5 6.4v.1M10.5 19v-9.5M10.5 13.2c0-2.2 1.35-3.9 3.65-3.9 2.1 0 3.35 1.35 3.35 3.85V19"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="member-heading">
-                    <div class="name">{{ member.name }}</div>
-                    <div class="role">{{ member.role }}</div>
+                  <p class="team-bio-text">{{ selectedCoreMember.bio }}</p>
+
+                  <div v-if="selectedCoreMember.location" class="team-bio-location">
+                    <span class="team-bio-location-logo-wrap">
+                      <img
+                        class="team-bio-location-logo"
+                        :src="locationLogo(selectedCoreMember)"
+                        :alt="`${selectedCoreMember.location} logo`"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                    <span class="team-bio-location-copy">
+                      <span class="team-bio-location-label">Location</span>
+                      <span class="team-bio-location-name">{{ selectedCoreMember.location }}</span>
+                    </span>
                   </div>
                 </div>
+              </aside>
 
-                <div class="member-divider" aria-hidden="true"></div>
-
-                <p class="bio">
-                  {{ member.bio }}
-                </p>
-
-                <div class="meta" aria-label="Member contact details">
-                  <div v-if="member.email" class="meta-row">
-                    <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 5h16v14H4z" stroke-width="1.6" />
-                      <path d="M4 7l8 6 8-6" stroke-width="1.6" />
-                    </svg>
-                    <a
-                      class="link"
-                      :href="mailto(member.email)"
-                      :aria-label="emailAriaLabel(member)"
-                    >
-                      {{ member.email }}
-                    </a>
-                  </div>
-
-                  <div v-if="member.linkedin" class="meta-row">
-                    <svg class="fill-primary" viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.2 2.3-2.47 4.73-2.47C22.4 7.73 24 10 24 14.06V24h-5v-8.5c0-2.03-.04-4.65-2.83-4.65-2.83 0-3.27 2.21-3.27 4.49V24H8z"
+              <ul class="team-profile-grid" aria-label="Core team members">
+                <li v-for="member in coreTeam" :key="member.key" class="team-profile-item">
+                  <button
+                    class="team-profile-button"
+                    type="button"
+                    :class="{ 'is-active': selectedCoreMember.key === member.key }"
+                    :aria-pressed="selectedCoreMember.key === member.key"
+                    @click="selectCoreMember(member)"
+                  >
+                    <span class="team-avatar" :data-initials="initials(member.name)">
+                      <img
+                        v-if="member.photo"
+                        :src="member.photo"
+                        :alt="portraitAlt(member)"
+                        loading="lazy"
+                        decoding="async"
                       />
-                    </svg>
-                    <a
-                      class="link"
-                      :href="member.linkedin"
-                      target="_blank"
-                      rel="noopener"
-                      :aria-label="linkedinAriaLabel(member)"
-                    >
-                      LinkedIn
-                    </a>
-                  </div>
+                    </span>
 
-                  <div v-if="member.location" class="meta-row">
-                    <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"
-                        stroke-width="1.6"
-                      />
-                      <circle cx="12" cy="9" r="2.5" stroke-width="1.6" />
-                    </svg>
-                    <span class="meta-text">{{ member.location }}</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
+                    <span class="team-profile-copy">
+                      <span class="team-profile-name" :title="member.name">{{ member.name }}</span>
+                      <span v-if="member.role" class="team-profile-role">{{ member.role }}</span>
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </section>
 
           <div class="spacer" aria-hidden="true"></div>
-
           <div class="spacer" aria-hidden="true"></div>
 
-          <section
-            class="team-section"
-            aria-labelledby="visiting-former-title"
-            aria-describedby="visiting-former-desc"
-          >
-            <h2 class="section-heading">Visiting Alumni</h2>
-
-            <ul class="team-grid" aria-label="Former visiting fellows">
-              <li v-for="member in visitingAlumni2" :key="member.key" class="member-card">
-                <div class="member-header">
-                  <div class="avatar" :data-initials="initials(member.name)">
-                    <img
-                      v-if="member.photo"
-                      :src="member.photo"
-                      :alt="portraitAlt(member)"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-
-                  <div class="member-heading">
-                    <div class="name">{{ member.name }}</div>
-                    <div class="role">{{ member.role }}</div>
-                  </div>
-                </div>
-
-                <div class="member-divider" aria-hidden="true"></div>
-
-                <p class="bio">
-                  {{ member.bio }}
-                </p>
-
-                <div class="meta" aria-label="Member contact details">
-                  <div v-if="member.email" class="meta-row">
-                    <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 5h16v14H4z" stroke-width="1.6" />
-                      <path d="M4 7l8 6 8-6" stroke-width="1.6" />
-                    </svg>
-                    <a
-                      class="link"
-                      :href="mailto(member.email)"
-                      :aria-label="emailAriaLabel(member)"
-                    >
-                      {{ member.email }}
-                    </a>
-                  </div>
-
-                  <div v-if="member.linkedin" class="meta-row">
-                    <svg class="fill-primary" viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.2 2.3-2.47 4.73-2.47C22.4 7.73 24 10 24 14.06V24h-5v-8.5c0-2.03-.04-4.65-2.83-4.65-2.83 0-3.27 2.21-3.27 4.49V24H8z"
-                      />
-                    </svg>
-                    <a
-                      class="link"
-                      :href="member.linkedin"
-                      target="_blank"
-                      rel="noopener"
-                      :aria-label="linkedinAriaLabel(member)"
-                    >
-                      LinkedIn
-                    </a>
-                  </div>
-
-                  <div v-if="member.location" class="meta-row">
-                    <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"
-                        stroke-width="1.6"
-                      />
-                      <circle cx="12" cy="9" r="2.5" stroke-width="1.6" />
-                    </svg>
-                    <span class="meta-text">{{ member.location }}</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
+          <section class="team-section" aria-labelledby="visiting-former-title">
+            <div class="section-topline">
+              <div>
+                <h2 id="visiting-former-title" class="section-heading">Visiting Alumni</h2>
+              </div>
+            </div>
           </section>
+
+          <div class="spacer" aria-hidden="true"></div>
+          <div class="spacer" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -195,7 +194,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useWordReveal } from '@/composables/useWordReveal'
 import { coreTeam as coreTeamData, advisoryBoard as advisoryBoardData } from '@/data/team.data'
@@ -209,6 +208,27 @@ const { el: heroTitleEl } = useWordReveal({
 
 const coreTeam = computed(() => TeamService.normalizeMembers(coreTeamData))
 const visitingAlumni = computed(() => TeamService.normalizeMembers(advisoryBoardData))
+
+const selectedCoreMemberKey = ref(coreTeam.value[0]?.key || '')
+const selectedCoreMember = computed(
+  () =>
+    coreTeam.value.find((member) => member.key === selectedCoreMemberKey.value) ||
+    coreTeam.value[0] ||
+    {},
+)
+
+const selectCoreMember = (member) => {
+  selectedCoreMemberKey.value = member.key
+}
+
+const DEFAULT_LOCATION_LOGO = '/images/logos/unibe.png'
+const locationLogo = (member) =>
+  member.locationLogo || member.institutionLogo || member.universityLogo || DEFAULT_LOCATION_LOGO
+
+const hasLinkedIn = (member) => Boolean(member.linkedin && member.linkedin !== '#')
+const guardMissingLink = (event) => {
+  if (!event.currentTarget.getAttribute('href')) event.preventDefault()
+}
 
 const initials = TeamService.initials
 const mailto = TeamService.mailto
