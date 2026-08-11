@@ -245,7 +245,7 @@ const { el: heroTitleEl } = useWordReveal({
 })
 
 const tz = agendaConfig.timezone || 'Europe/Zurich'
-const upcomingAgenda = computed(() => HomeService.getUpcomingAgenda(agendaConfig.items, 8))
+const upcomingAgenda = computed(() => HomeService.getUpcomingAgenda(agendaConfig.items, 6))
 
 const openMenuIndex = ref(null)
 const menuPos = ref({ top: 0, left: 0 })

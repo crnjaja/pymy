@@ -5,7 +5,7 @@ export class HomeService {
     return d
   }
 
-  static getUpcomingAgenda(items = [], limit = 8, now = new Date()) {
+  static getUpcomingAgenda(items = [], limit = 6, now = new Date()) {
     const today = HomeService.startOfDay(now)
 
     return items
