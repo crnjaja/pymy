@@ -81,7 +81,7 @@
   position: absolute;
   inset: auto -1px -1px -1px;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, var(--accentbis), var(--accentbis-2));
 }
 
 /* Responsive: stack nicely on smaller screens */

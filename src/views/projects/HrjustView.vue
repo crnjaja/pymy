@@ -13,8 +13,8 @@
           </h1>
 
           <p class="hero-subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
+            HRJust examines human rights justifications and strengthens human rights protection
+            through inclusive research.
           </p>
 
           <div class="hero-actions">

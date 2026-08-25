@@ -1,0 +1,1016 @@
+/* =========================================================
+   TOKENS
+========================================================= */
+.home-modern-cards .feature-section,
+.home-modern-cards .projects-section {
+  --home-teal: #02989e;
+  --home-green-dark: #0b635b;
+  --home-green: #6b9760;
+  --accent: #02989e;
+  --accent-2: #0b635b;
+  --accentbis: #6b9760;
+  --home-card-gradient: #02989e;
+  --home-card-shadow: 0 22px 56px rgba(2, 152, 158, 0.28);
+  --home-card-shadow-hover: 0 30px 72px rgba(0, 0, 0, 0.24);
+  --home-glass: rgba(255, 255, 255, 0.15);
+  --home-glass-border: rgba(255, 255, 255, 0.26);
+  --home-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 18px 42px rgba(0, 0, 0, 0.14);
+  --gap: clamp(34px, 5vw, 72px);
+  container-type: inline-size;
+}
+/* =========================================================
+   SECTIONS
+========================================================= */
+.home-modern-cards .feature-section {
+  padding: clamp(26px, 5vw, 58px) 0 clamp(48px, 6vw, 78px);
+}
+.home-modern-cards .projects-section {
+  padding: clamp(30px, 4vw, 50px) 0 clamp(66px, 8vw, 118px);
+}
+/* =========================================================
+   LARGE SECTION HEADINGS
+========================================================= */
+.home-modern-cards .section-heading,
+.home-modern-cards .projects-heading {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 clamp(24px, 3vw, 40px);
+  color: rgba(11, 42, 74, 0.16);
+  font-size: clamp(38px, 8vw, 86px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+.home-modern-cards .section-heading::after,
+.home-modern-cards .projects-heading::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin-top: clamp(6px, 0.9cqw, 10px);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+}
+/* =========================================================
+   GRIDS
+========================================================= */
+.home-modern-cards .feature-grid,
+.home-modern-cards .projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  overflow: visible;
+}
+.home-modern-cards .focus-grid {
+  align-items: start;
+}
+.home-modern-cards .focus-left {
+  display: grid;
+  gap: clamp(42px, 5vw, 72px);
+}
+@media (min-width: 1100px) {
+  .home-modern-cards .focus-grid {
+    grid-template-columns:
+      minmax(0, 1.15fr)
+      min(360px, 30%);
+    gap: clamp(36px, 4vw, 58px);
+  }
+}
+@media (min-width: 900px) {
+  .home-modern-cards .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(42px, 5vw, 68px) clamp(28px, 3.5vw, 48px);
+  }
+}
+/* =========================================================
+   ROWS
+========================================================= */
+.home-modern-cards .feature-row,
+.home-modern-cards .project-row {
+  position: relative;
+  display: grid;
+  align-items: stretch;
+  opacity: 0;
+  transform: translateY(14px);
+  overflow: visible;
+}
+.home-modern-cards .feature-row {
+  min-height: clamp(470px, 48cqw, 610px);
+}
+.home-modern-cards .project-row {
+  min-height: clamp(430px, 45cqw, 560px);
+}
+/* =========================================================
+   OUTER CARD / MEDIA FRAME
+========================================================= */
+.home-modern-cards .media-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: inherit;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--home-card-gradient);
+  border: 0;
+  border-radius: 0;
+  box-shadow: var(--home-card-shadow);
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease;
+}
+/* =========================================================
+   FULL COLOURED BACKGROUND
+   Matches Contact Message card
+========================================================= */
+.home-modern-cards .modern-color-block,
+.home-modern-cards .feature-media,
+.home-modern-cards .project-media,
+.home-modern-cards .project-row:nth-child(odd) .project-media,
+.home-modern-cards .project-row:nth-child(even) .project-media {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--accent) !important;
+  box-shadow: none;
+  pointer-events: none;
+}
+/* =========================================================
+   UNIQUE CARD TONES
+   Same 3 brand colors only — uniqueness comes from
+   lightness, darkness, overlays and depth
+========================================================= */
+/* ---------- Latest / News ---------- */
+.home-modern-cards .feature-row:nth-child(3n + 1) .modern-color-block,
+.home-modern-cards .feature-row:nth-child(3n + 1) .feature-media {
+  background: var(--accent) !important;
+}
+.home-modern-cards .feature-row:nth-child(3n + 1) .modern-color-block::before {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.04) 42%,
+      rgba(11, 99, 91, 0.3) 100%
+    ),
+    radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.14), transparent 34%);
+}
+.home-modern-cards .feature-row:nth-child(3n + 2) .modern-color-block,
+.home-modern-cards .feature-row:nth-child(3n + 2) .feature-media {
+  background: var(--accent-2) !important;
+}
+.home-modern-cards .feature-row:nth-child(3n + 2) .modern-color-block::before {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(2, 152, 158, 0.34) 0%,
+      rgba(255, 255, 255, 0.03) 52%,
+      rgba(0, 0, 0, 0.16) 100%
+    ),
+    radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.1), transparent 30%);
+}
+.home-modern-cards .feature-row:nth-child(3n) .modern-color-block,
+.home-modern-cards .feature-row:nth-child(3n) .feature-media {
+  background: var(--accentbis) !important;
+}
+.home-modern-cards .feature-row:nth-child(3n) .modern-color-block::before {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(2, 152, 158, 0.14) 45%,
+      rgba(11, 99, 91, 0.3) 100%
+    ),
+    radial-gradient(circle at 18% 82%, rgba(255, 255, 255, 0.1), transparent 36%);
+}
+/* ---------- Five projects ---------- */
+.home-modern-cards .project-row:nth-child(5n + 1) .modern-color-block,
+.home-modern-cards .project-row:nth-child(5n + 1) .project-media {
+  background: var(--accent) !important;
+}
+.home-modern-cards .project-row:nth-child(5n + 1) .modern-color-block::before {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.02) 48%,
+    rgba(11, 99, 91, 0.34) 100%
+  );
+}
+.home-modern-cards .project-row:nth-child(5n + 2) .modern-color-block,
+.home-modern-cards .project-row:nth-child(5n + 2) .project-media {
+  background: var(--accent-2) !important;
+}
+.home-modern-cards .project-row:nth-child(5n + 2) .modern-color-block::before {
+  background: linear-gradient(
+    145deg,
+    rgba(2, 152, 158, 0.3) 0%,
+    rgba(255, 255, 255, 0.02) 44%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+.home-modern-cards .project-row:nth-child(5n + 3) .modern-color-block,
+.home-modern-cards .project-row:nth-child(5n + 3) .project-media {
+  background: var(--accentbis) !important;
+}
+.home-modern-cards .project-row:nth-child(5n + 3) .modern-color-block::before {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(2, 152, 158, 0.1) 48%,
+    rgba(11, 99, 91, 0.26) 100%
+  );
+}
+.home-modern-cards .project-row:nth-child(5n + 4) .modern-color-block,
+.home-modern-cards .project-row:nth-child(5n + 4) .project-media {
+  background: var(--accent) !important;
+}
+.home-modern-cards .project-row:nth-child(5n + 4) .modern-color-block::before {
+  background: linear-gradient(
+    145deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 46%,
+    rgba(107, 151, 96, 0.34) 100%
+  );
+}
+.home-modern-cards .project-row:nth-child(5n) .modern-color-block,
+.home-modern-cards .project-row:nth-child(5n) .project-media {
+  background: var(--accent-2) !important;
+}
+.home-modern-cards .project-row:nth-child(5n) .modern-color-block::before {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(107, 151, 96, 0.2) 52%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+}
+/* =========================================================
+   CONTACT-CARD STYLE LIGHT
+========================================================= */
+.home-modern-cards .modern-color-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 9%, rgba(255, 255, 255, 0.1), transparent 36%),
+    radial-gradient(circle at 92% 82%, rgba(255, 255, 255, 0.07), transparent 40%);
+  z-index: 0;
+}
+/* Remove the old inner outline */
+.home-modern-cards .modern-color-block::after {
+  content: none;
+}
+/* =========================================================
+   CONTACT-CARD STYLE WHITE CIRCLES
+========================================================= */
+.home-modern-cards .color-orb {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 1;
+}
+/* Top-right circle — like Contact Message card */
+.home-modern-cards .color-orb--one {
+  top: -78px;
+  right: -74px;
+  width: 210px;
+  height: 210px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 0;
+  transition: transform 0.35s ease;
+}
+/* Bottom-left circle — like Contact Message card */
+.home-modern-cards .color-orb--two {
+  bottom: -96px;
+  left: -72px;
+  width: 248px;
+  height: 248px;
+  background: rgba(255, 255, 255, 0.09);
+}
+/* =========================================================
+   REMOVE OLD EXTRA DECORATION
+========================================================= */
+.home-modern-cards .color-line,
+.home-modern-cards .color-line--one,
+.home-modern-cards .color-line--two,
+.home-modern-cards .color-mark {
+  display: none !important;
+}
+/* =========================================================
+   GLASS TEXT PANEL
+   Equivalent to Contact .contact-form
+========================================================= */
+.home-modern-cards .feature-card,
+.home-modern-cards .project-card,
+.home-modern-cards .project-row:nth-child(odd) .project-card,
+.home-modern-cards .project-row:nth-child(even) .project-card {
+  position: relative;
+  z-index: 5;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: auto !important;
+  min-height: 0;
+  max-height: none;
+  /*
+    Top margin creates the coloured area
+    where the external label lives.
+  */
+  margin: clamp(58px, 8cqw, 82px) clamp(18px, 2.8cqw, 30px) clamp(18px, 2.8cqw, 30px);
+  padding: clamp(22px, 3cqw, 32px);
+  box-sizing: border-box;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 18px 42px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  /*
+    IMPORTANT:
+    visible so the label can sit above
+    and outside this glass panel.
+  */
+  overflow: visible;
+  transform: none !important;
+  transition:
+    transform 0.24s ease,
+    background 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
+}
+/* No internal decorative semicircle */
+.home-modern-cards .feature-card::before,
+.home-modern-cards .project-card::before,
+.home-modern-cards .feature-card::after,
+.home-modern-cards .project-card::after {
+  content: none !important;
+}
+/* =========================================================
+   CONTENT STACK
+========================================================= */
+.home-modern-cards .feature-card > *,
+.home-modern-cards .project-card > * {
+  position: relative;
+  z-index: 1;
+}
+/*
+  Important:
+  make the first inner DIV non-positioned so
+  the external label positions against the card itself.
+*/
+.home-modern-cards .feature-card > div,
+.home-modern-cards .project-card > div {
+  position: static;
+  min-width: 0;
+}
+/* =========================================================
+   PREMIUM LARGE FLOATING TAGS
+   Latest + Project names
+========================================================= */
+.home-modern-cards .feature-section .feature-card .pill,
+.home-modern-cards .project-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(calc(-100% - 14px));
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: calc(100% - 2px);
+  margin: 0;
+  padding: 12px 18px 12px 14px;
+  color: #0b635b;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-left: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 950;
+  line-height: 1.15;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: none;
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  white-space: normal;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+/* Larger signature mark */
+.home-modern-cards .feature-section .feature-card .pill::before,
+.home-modern-cards .project-title::before {
+  content: '';
+  flex: 0 0 auto;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: var(--card-tag-color, var(--accent));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--card-tag-color, var(--accent)) 14%, transparent);
+}
+.home-modern-cards .feature-row:nth-child(3n + 1) {
+  --card-tag-color: var(--accent);
+}
+.home-modern-cards .feature-row:nth-child(3n + 2) {
+  --card-tag-color: var(--accent-2);
+}
+.home-modern-cards .feature-row:nth-child(3n) {
+  --card-tag-color: var(--accentbis);
+}
+.home-modern-cards .project-row:nth-child(5n + 1) {
+  --card-tag-color: var(--accent);
+}
+.home-modern-cards .project-row:nth-child(5n + 2) {
+  --card-tag-color: var(--accent-2);
+}
+.home-modern-cards .project-row:nth-child(5n + 3) {
+  --card-tag-color: var(--accentbis);
+}
+.home-modern-cards .project-row:nth-child(5n + 4) {
+  --card-tag-color: var(--accent);
+}
+.home-modern-cards .project-row:nth-child(5n) {
+  --card-tag-color: var(--accent-2);
+}
+/* =========================================================
+   FEATURE / NEWS TITLE INSIDE GLASS
+========================================================= */
+.home-modern-cards .feature-title {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: clamp(24px, 2.8cqw, 32px);
+  line-height: 1.08;
+  font-weight: 950;
+  letter-spacing: -0.025em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.14);
+}
+/* =========================================================
+   BODY TEXT
+========================================================= */
+.home-modern-cards .feature-text,
+.home-modern-cards .project-text {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(16px, 1.8cqw, 19px);
+  line-height: 1.62;
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+/* =========================================================
+   FEATURE META
+========================================================= */
+.home-modern-cards .feature-meta {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 13px;
+  font-weight: 750;
+}
+/* =========================================================
+   ACTIONS
+========================================================= */
+.home-modern-cards .actions-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: auto;
+}
+.home-modern-cards .feature-actions,
+.home-modern-cards .project-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 14px;
+}
+/* =========================================================
+   CARD LINKS — MESSAGE BUTTON STYLE
+========================================================= */
+.home-modern-cards .feature-card .feature-link,
+.home-modern-cards .project-card .feature-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.home-modern-cards .feature-card .feature-link::after,
+.home-modern-cards .project-card .feature-link::after {
+  content: none;
+}
+.home-modern-cards .feature-card .feature-link:hover,
+.home-modern-cards .feature-card .feature-link:focus-visible,
+.home-modern-cards .project-card .feature-link:hover,
+.home-modern-cards .project-card .feature-link:focus-visible {
+  transform: translateY(-3px);
+  color: #0b635b;
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.24);
+  outline: none;
+}
+/* =========================================================
+   CARD HOVER
+   Matches Contact Message card
+========================================================= */
+@media (hover: hover) {
+  .home-modern-cards .feature-row:hover .media-frame,
+  .home-modern-cards .project-row:hover .media-frame {
+    transform: translateY(-4px);
+    box-shadow: var(--home-card-shadow-hover);
+  }
+  .home-modern-cards .feature-row:hover .feature-card,
+  .home-modern-cards .project-row:hover .project-card {
+    background: rgba(255, 255, 255, 0.17);
+    border-color: rgba(255, 255, 255, 0.32);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.25),
+      0 20px 46px rgba(0, 0, 0, 0.17);
+  }
+  .home-modern-cards .feature-row:hover .color-orb--one,
+  .home-modern-cards .project-row:hover .color-orb--one {
+    transform: translate(-3px, 3px) scale(1.015);
+  }
+}
+/* =========================================================
+   AGENDA
+   Kept visually separate / readable
+========================================================= */
+.home-modern-cards .agenda {
+  display: grid;
+  opacity: 0;
+  transform: translateY(14px);
+}
+.home-modern-cards .agenda-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(18px, 2.2cqw, 24px);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 48px rgba(10, 34, 59, 0.11);
+  overflow: hidden;
+}
+.home-modern-cards .agenda-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+.home-modern-cards .agenda-card > * {
+  position: relative;
+  z-index: 1;
+}
+.home-modern-cards .agenda-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.home-modern-cards .agenda-card .pill {
+  display: inline-block;
+  width: max-content;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(2, 152, 158, 0.62);
+  border-radius: 0;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.home-modern-cards .agenda-title {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(18px, 2.4cqw, 22px);
+  font-weight: 950;
+}
+.home-modern-cards .agenda-list {
+  display: grid;
+  flex: 1 1 auto;
+  gap: 10px;
+  min-height: 180px;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+.home-modern-cards .agenda-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 10px 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(10, 34, 59, 0.08);
+}
+.home-modern-cards .agenda-item:last-child {
+  border-bottom: none;
+}
+.home-modern-cards .agenda-date {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  padding: 8px 6px;
+  color: var(--navy);
+  text-align: center;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(241, 250, 247, 0.98));
+  border: 1px solid rgba(2, 152, 158, 0.16);
+  border-radius: var(--radius);
+  box-shadow: 0 7px 18px rgba(10, 34, 59, 0.07);
+}
+.home-modern-cards .agenda-date .day {
+  color: var(--navy);
+  font-size: 22px;
+  font-weight: 950;
+  line-height: 1;
+}
+.home-modern-cards .agenda-date .month {
+  color: rgba(11, 31, 51, 0.6);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.home-modern-cards .agenda-main {
+  display: grid;
+  gap: 4px;
+}
+.home-modern-cards .agenda-link {
+  color: var(--navy);
+  font-weight: 950;
+  line-height: 1.3;
+  text-decoration: none;
+}
+.home-modern-cards a.agenda-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.home-modern-cards .agenda-meta {
+  color: rgba(11, 31, 51, 0.6);
+  font-size: 13px;
+  font-weight: 750;
+}
+.home-modern-cards .agenda-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.home-modern-cards .agenda-item:hover .agenda-actions,
+.home-modern-cards .agenda-item:focus-within .agenda-actions {
+  opacity: 1;
+}
+.home-modern-cards .agenda-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+/* =========================================================
+   AGENDA LINKS
+========================================================= */
+.home-modern-cards .agenda .feature-link {
+  position: relative;
+  color: var(--accent);
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.home-modern-cards .agenda .feature-link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+.home-modern-cards .agenda .feature-link:hover::after,
+.home-modern-cards .agenda .feature-link:focus-visible::after {
+  transform: scaleX(1);
+}
+/* =========================================================
+   ICON BUTTON
+========================================================= */
+.home-modern-cards .icon-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid rgba(10, 34, 59, 0.16);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+.home-modern-cards .icon-btn:hover {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.home-modern-cards .icon-btn svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+.home-modern-cards .icon-btn svg path {
+  fill: currentColor;
+}
+/* =========================================================
+   CALENDAR POPOVER
+========================================================= */
+.agenda-popover {
+  position: fixed;
+  z-index: 9999;
+  min-width: 180px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid rgba(10, 34, 59, 0.16);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 38px rgba(10, 34, 59, 0.14);
+}
+.agenda-popover a,
+.agenda-popover button {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  color: var(--navy);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+.agenda-popover a:hover,
+.agenda-popover button:hover {
+  background: rgba(2, 152, 158, 0.07);
+}
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 1099px) {
+  .home-modern-cards .feature-row {
+    min-height: clamp(470px, 63vw, 610px);
+  }
+  .home-modern-cards .project-row {
+    min-height: clamp(430px, 60vw, 550px);
+  }
+  .home-modern-cards .feature-card,
+  .home-modern-cards .project-card,
+  .home-modern-cards .project-row:nth-child(odd) .project-card,
+  .home-modern-cards .project-row:nth-child(even) .project-card {
+    margin: clamp(96px, 13vw, 118px) clamp(18px, 3vw, 28px) clamp(18px, 3vw, 28px);
+    padding: clamp(22px, 3vw, 30px);
+  }
+  .home-modern-cards .agenda {
+    margin-top: clamp(28px, 4vw, 50px);
+  }
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 700px) {
+  .home-modern-cards .feature-section,
+  .home-modern-cards .projects-section {
+    container-type: normal;
+  }
+  .home-modern-cards .feature-row,
+  .home-modern-cards .project-row {
+    min-height: auto;
+    margin-bottom: 34px;
+  }
+  .home-modern-cards .media-frame {
+    min-height: 500px;
+  }
+  .home-modern-cards .feature-card,
+  .home-modern-cards .project-card,
+  .home-modern-cards .project-row:nth-child(odd) .project-card,
+  .home-modern-cards .project-row:nth-child(even) .project-card {
+    position: relative;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    min-height: 0;
+    max-height: none;
+    margin: 94px 16px 16px;
+    padding: 22px;
+    transform: none !important;
+  }
+  .home-modern-cards .feature-section .feature-card .pill,
+  .home-modern-cards .project-title {
+    transform: translateY(calc(-100% - 12px));
+    gap: 10px;
+    padding: 10px 14px 10px 12px;
+    font-size: 12px;
+    letter-spacing: 0.085em;
+  }
+  .home-modern-cards .feature-title {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+  .home-modern-cards .feature-text,
+  .home-modern-cards .project-text {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .home-modern-cards .feature-actions,
+  .home-modern-cards .project-actions {
+    padding-top: 10px;
+  }
+  .home-modern-cards .feature-card .feature-link,
+  .home-modern-cards .project-card .feature-link {
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+}
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+@media (max-width: 420px) {
+  .home-modern-cards .media-frame {
+    min-height: 480px;
+  }
+  .home-modern-cards .feature-card,
+  .home-modern-cards .project-card {
+    margin: 90px 14px 14px;
+    padding: 19px;
+  }
+  .home-modern-cards .feature-title {
+    font-size: 22px;
+  }
+  .home-modern-cards .feature-text,
+  .home-modern-cards .project-text {
+    font-size: 15px;
+    line-height: 1.52;
+  }
+  .home-modern-cards .actions-right {
+    flex-wrap: wrap;
+  }
+  .home-modern-cards .feature-card .feature-link,
+  .home-modern-cards .project-card .feature-link {
+    width: 100%;
+  }
+  .home-modern-cards .feature-section .feature-card .pill,
+  .home-modern-cards .project-title {
+    max-width: 100%;
+    font-size: 11px;
+  }
+}
+/* =========================================================
+   TOUCH
+========================================================= */
+@media (hover: none) {
+  .home-modern-cards .agenda-actions {
+    opacity: 1;
+  }
+}
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .home-modern-cards .media-frame,
+  .home-modern-cards .feature-card,
+  .home-modern-cards .project-card,
+  .home-modern-cards .color-orb,
+  .home-modern-cards .feature-link,
+  .home-modern-cards .feature-link::after {
+    transition: none !important;
+  }
+  .home-modern-cards .feature-row:hover .media-frame,
+  .home-modern-cards .project-row:hover .media-frame,
+  .home-modern-cards .feature-row:hover .feature-card,
+  .home-modern-cards .project-row:hover .project-card {
+    transform: none !important;
+  }
+}
+/* =========================================================
+   FINAL SAFETY RESET
+   Protects against old homepage CSS
+========================================================= */
+.home-modern-cards .feature-card,
+.home-modern-cards .project-card,
+.home-modern-cards .project-row:nth-child(odd) .project-card,
+.home-modern-cards .project-row:nth-child(even) .project-card {
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: auto !important;
+  transform: none !important;
+}
+.home-modern-cards .feature-media,
+.home-modern-cards .project-media,
+.home-modern-cards .modern-color-block {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+/* =========================================================
+   LATEST CARDS — CONTENT-DRIVEN HEIGHT
+   Last News + Last Publication
+========================================================= */
+/* Do not force Latest cards to have a predefined height */
+.home-modern-cards .feature-row {
+  min-height: 0;
+  height: auto;
+}
+/* Outer coloured card grows according to its content */
+.home-modern-cards .feature-row .media-frame {
+  min-height: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+/*
+  Keep exactly the same top area on every Latest card.
+  82px = space reserved for:
+  - coloured background above
+  - external tag
+  - gap before glass panel
+*/
+.home-modern-cards .feature-row .feature-card {
+  margin: 82px clamp(18px, 2.8cqw, 30px) clamp(18px, 2.8cqw, 30px);
+  min-height: 0;
+  height: auto;
+}
+/*
+  Keep Last News / Last Publication tags
+  at exactly the same vertical position.
+*/
+.home-modern-cards .feature-row .feature-card .pill {
+  top: 0;
+  left: 0;
+  transform: translateY(calc(-100% - 14px));
+}
+/* Background always follows the dynamically-sized outer card */
+.home-modern-cards .feature-row .modern-color-block,
+.home-modern-cards .feature-row .feature-media {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}

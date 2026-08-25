@@ -2,6 +2,63 @@ export const fallbackImage = '/files/events/event-placeholder.jpg'
 
 export const events = [
   {
+    id: 'gendered-precarities-gender-lecture-series-2026-2027',
+    title: 'Gendered Precarities: Gender Lecture Series 2026–2027',
+    start: '2026-09-01T12:30',
+    end: '2027-03-16T13:30',
+    location: 'World Trade Institute / Online',
+    category: 'Lecture Series',
+    image: '/files/events/Bern.jpg',
+    imageAlt: 'Gendered Precarities – Gender Lecture Series 2026–2027',
+    speakers: ['Partners'],
+    summary: `The Gender Lecture Series 2026–2027, “Gendered Precarities”, is co-organized by the World Trade Institute (WTI), KNOW THE GAP!, and the Faculty of Law of the University of Bern.
+
+The series aims to deepen understanding of the complexity of gender issues by exploring their multiple dimensions at both the international and domestic levels. The 2026–2027 edition focuses on precarity as a broad analytical lens for examining contemporary social, political, and legal challenges. Through an interdisciplinary perspective, the lectures explore how precarity is experienced, produced, and contested across different contexts, highlighting the central role of gender inequalities in shaping contemporary life.
+
+The programme includes eight lectures:
+
+1 September 2026, 12:30–13:30 | Zoom Webinar
+“Justifying Women's Poverty: Challenging the Constitutional Permissibility of Women's Poverty”
+Meghan Campbell, University of Birmingham
+
+8 September 2026, 12:30–13:30 | Hybrid Event
+“Intersectional Precarities in Neo-Liberal Societies: Thais in Belgium and Belgians in Thailand”
+Asuncion Fresnoza, F.R.S.-FNRS, Université libre de Bruxelles
+
+29 September 2026, 12:30–13:30 | Hybrid Event
+“The Hidden Costs of Crises: Gender, Inequality, and Recovery”
+Simonetta Zarrilli, ARTNeT
+
+3 November 2026, 12:30–13:30 | Zoom Webinar
+“Gender Stereotyping in International Human Rights Judicial Discourse”
+Carmelo Danisi, University of Bologna
+
+1 December 2026, 15:30–16:30 | Zoom Webinar
+“Feminist Academic Freedom in Latin America in the New Geopolitical Context”
+Cristina Burneo Salazar, Independent Researcher
+
+26 January 2027, 15:30–16:30 | Zoom Webinar
+“Precarious Justice: Travesti Reparation in Abya Yala”
+Diego Falconí, Universidad Autónoma de Barcelona
+
+9 February 2027, 15:30–16:30 | Zoom Webinar
+“Reproductive Justice & Resistance in Precarious Times”
+Luna Zakiya, Washington University
+
+16 March 2027, 12:30–13:30 | Zoom Webinar
+“Human Rights Law and Gender-Based Poverty: Reproduction or Transformation?”
+Kelly-Jane Bishop, TRANSVERSAL Consulting
+
+Participation is open to the public and free of charge. The hybrid events will be held at the World Trade Institute and can also be attended remotely via Zoom. For further information, please contact Dr Simone Ferrari at simone.ferrari@unibe.ch.`,
+    links: {
+      program: '',
+      flyer: '',
+      video: '',
+      external: '',
+    },
+    gallery: [],
+  },
+  {
     id: 'summer-school-reshaping-memory-and-nature',
     title: 'Summer School: Reshaping Memory and Nature. Commons in the Face of Climate Change.',
     start: '2026-07-15T15:00',
